@@ -11,6 +11,7 @@
   "scripts": {
     "start": "NODE_ENV=development nodemon app.js",
     "start:prod": "NODE_ENV=production nodemon app.js",
+    "scss": "node-sass --watch scss -o ./public/css",
     "test": "echo 'ERROR : no test specified' && exit 1"
   },
   "author": "ImMara",
@@ -25,6 +26,7 @@
     "mongoose": "^5.12.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "node-sass": "^6.0.0",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
