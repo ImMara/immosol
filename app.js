@@ -15,7 +15,7 @@ const errorHandler = require('errorhandler');
 
 // *********  DATABASE  *********
 
-// require('./database');
+require('./database');
 
 // *********  EXPRESS SETUP  *********
 

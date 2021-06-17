@@ -1,37 +1,45 @@
 extends ../layout
 
 block content
-    div(class="m-0 p-0 row" style="height:calc(100% - 56px)")
-        div(class="col-2 h-100 bg-light")
-            ul(class="navbar-nav me-auto mt-5 mb-lg-0")
-                li
-                    a(class="btn btn-outline-success" href="/locations/create") Créer une annonces
-                li
-                    a
-                li
-                    a
-        div(class="col")
-            h2(class="mt-5")  Liste de biens a louer
-            table(class="table mt-5")
-                thead
-                    tr
-                        th(scope="col") #
-                        th(scope="col") First
-                        th(scope="col") Last
-                        th(scope="col") Handle
-                tbody
-                    tr
-                        th(scope="row") 1
-                        td Mark
-                        td Otto
-                        td @mdo
-                    tr
-                        th(scope="row") 2
-                        td Jacob
-                        td Thornton
-                        td @fat
-                    tr
-                        th(scope="row") 3
-                        td(colspan="2") Larry the Bird
-                        td @twitter
+    div(class="container")
+        div(class="m-0 p-0 d-flex")
+            div(class="w-25 mt-5")
+                a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
+                a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
+                a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
+                a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
+            div(class="w-75")
+                h2(class="mt-5")
+                    i(class="fas fa-sign me-2")
+                    .
+                        Liste de biens a louer
+                table(class="table mt-5 w-100")
+                    thead
+                        tr
+                            th(scope="col") #
+                            th(scope="col") titre
+                            th(scope="col" class="w-50") Addresse
+                            th(scope="col") actions
+                    tbody
+                        tr
+                            th(scope="row") 1
+                            td Appartement À Louer
+                            td CALLE HAWAI, 03189 VILLAMARTIN, ORIHUELA COSTA, Espagne
+                            td
+                                a(class="btn btn-outline-success me-2") Editer
+                                a(class="btn btn-danger ") delete
+                        tr
+                            th(scope="row") 1
+                            td Appartement À Louer
+                            td CALLE HAWAI, 03189 VILLAMARTIN, ORIHUELA COSTA, Espagne
+                            td
+                                a(class="btn btn-outline-success me-2") Editer
+                                a(class="btn btn-danger ") delete
+                        tr
+                            th(scope="row") 1
+                            td Appartement À Louer
+                            td CALLE HAWAI, 03189 VILLAMARTIN, ORIHUELA COSTA, Espagne
+                            td
+                                a(class="btn btn-outline-success me-2") Editer
+                                a(class="btn btn-danger ") delete
 

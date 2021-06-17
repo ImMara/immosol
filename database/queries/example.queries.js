@@ -1,4 +1,4 @@
-const example = require('../schemas/example.model')
+const example = require('../schemas/user.model')
 
 exports.findAllBlogs = () => {
 
