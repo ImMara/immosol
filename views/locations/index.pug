@@ -1,4 +1,37 @@
 extends ../layout
 
 block content
-    h2  location page
+    div(class="m-0 p-0 row" style="height:calc(100% - 56px)")
+        div(class="col-2 h-100 bg-light")
+            ul(class="navbar-nav me-auto mt-5 mb-lg-0")
+                li
+                    a(class="btn btn-outline-success" href="/locations/create") Créer une annonces
+                li
+                    a
+                li
+                    a
+        div(class="col")
+            h2(class="mt-5")  Liste de biens a louer
+            table(class="table mt-5")
+                thead
+                    tr
+                        th(scope="col") #
+                        th(scope="col") First
+                        th(scope="col") Last
+                        th(scope="col") Handle
+                tbody
+                    tr
+                        th(scope="row") 1
+                        td Mark
+                        td Otto
+                        td @mdo
+                    tr
+                        th(scope="row") 2
+                        td Jacob
+                        td Thornton
+                        td @fat
+                    tr
+                        th(scope="row") 3
+                        td(colspan="2") Larry the Bird
+                        td @twitter
+

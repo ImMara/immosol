@@ -5,3 +5,11 @@ exports.getLocations = async (req,res,next) =>{
         next(e)
     }
 }
+
+exports.createLocations = async (req,res,next) =>{
+    try{
+        res.render('locations/create')
+    }catch (e){
+        next(e)
+    }
+}
