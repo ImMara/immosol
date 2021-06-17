@@ -5,12 +5,16 @@ block content
         div(class="col m-0 p-0 d-lg-block d-none")
             img(src="/images/bg-form.jpg" class="w-100 h-100" alt="bg-form" style="object-fit:cover;")
         div(class="col m-0 p-0 h-100 d-flex justify-content-center align-items-center")
-            form(class="w-50")
+            if errors
+                ul
+                    each error in errors
+                        li= error
+            form(class="w-50" method="post" action="/login")
                 div(class="mb-3")
                     label(for="exampleInputEmail1" class="form-label") Email address
-                    input(type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp")
+                    input(type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp")
                     div(id="emailHelp" class="form-text") We'll never share your email with anyone else.
                 div(class="mb-3")
                     label(for="exampleInputPassword1" class="form-label") Password
-                    input(type="password" class="form-control" id="exampleInputPassword1")
+                    input(type="password" name="password" class="form-control" id="exampleInputPassword1")
                 button(type="submit" class="btn btn-primary") Submit

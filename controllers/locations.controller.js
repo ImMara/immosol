@@ -1,6 +1,6 @@
 exports.getLocations = async (req,res,next) =>{
     try{
-        res.render('locations/index')
+        res.render('locations/index',{currentUser: req.user})
     }catch (e) {
         next(e)
     }
@@ -8,7 +8,7 @@ exports.getLocations = async (req,res,next) =>{
 
 exports.createLocations = async (req,res,next) =>{
     try{
-        res.render('locations/create')
+        res.render('locations/create',{currentUser: req.user})
     }catch (e){
         next(e)
     }
