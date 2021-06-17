@@ -46,10 +46,30 @@ exports.findUserPerId = (id) => {
 
 // UPDATE USER
 
-exports.findUserAndUpdate = (id, user) => {
+exports.findUserAndUpdate = async (id, user, password) => {
+        return User.findByIdAndUpdate(id, {
+            $set: {
+                username: user.username,
+                local: {
+                    email: user.email,
+                    password: password
+                }
+            }
+        });
+}
+// UPDATE USER WITH PASSWORD
 
-    return User.findByIdAndUpdate(id, {$set: user}, {runValidators: true});
-
+exports.findUserAndUpdateWithPassword = async (id, user) => {
+    const hashedPassword = await User.hashPassword(user.password);
+    return User.findByIdAndUpdate(id, {
+        $set: {
+            username: user.username,
+            local: {
+                email: user.email,
+                password: hashedPassword
+            }
+        }
+    });
 }
 
 // ALL USER

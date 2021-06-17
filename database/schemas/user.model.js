@@ -10,8 +10,6 @@ const userSchema = schema({
         unique: true,
     },
 
-    image : { type:String },
-
     local: {
         email: {type: String, required: true, unique: true},
         password: {type: String},
