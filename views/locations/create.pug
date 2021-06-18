@@ -1,4 +1,74 @@
 extends ../layout
 
 block content
-    h2 create
+    .container
+        h2(class="mt-5 mb-5") Ajouts d'une locations
+        form(method="post" action='/locations/create')
+            h4 Titre du bien
+            hr
+            div(class="mb-3")
+                label(class="form-label") titre
+                input(class="form-control" name="title" type="text")
+            h4 Contact pour le bien
+            hr
+            div(class="mb-3 row")
+                div(class='col-6')
+                    label(class="form-label") name
+                    input(class="form-control" name="name" value=currentUser.name type="text")
+                div(class="mb-3 col-6")
+                    label(class="form-label") email
+                    input(class="form-control" name="email" value=currentUser.local.email type="text")
+            div(class="mb-3 row")
+                div(class='col-6')
+                    label(class="form-label") phone
+                    input(class="form-control" name="phone" value=currentUser.phone type="text")
+                div(class="col-6")
+                    label(class="form-label") facebook
+                    input(class="form-control" name="facebook" type="text")
+            h4 Localisation du bien
+            hr
+            div(class="mb-3")
+                label(class="form-label") city
+                input(class="form-control" name="city" type="text")
+            div(class="mb-3")
+                label(class="form-label") zip
+                input(class="form-control" name="zip" type="number")
+            div(class="mb-3")
+                label(class="form-label") country
+                input(class="form-control" name="country" type="text")
+            h4 Details
+            hr
+            div(class="mb-3 row")
+                div(class='col-3')
+                    label(class="form-label") surface
+                    input(class="form-control" name="surface" type="number")
+                div(class="col-3")
+                    label(class="form-label") chambres
+                    input(class="form-control" name="bedroom" type="number")
+                div(class="col-3")
+                    label(class="form-label") salle de bain
+                    input(class="form-control" name="bathroom" type="number")
+                div(class='col-3')
+                    label(class="form-label") cost
+                    input(class="form-control" name="cost" type="number")
+            div(class="mb-3 row")
+                div(class="col-3")
+                    label(class="form-check-label me-3") cuisine
+                    input(class="form-check-input" name="kitchen" type="checkbox")
+                div(class='col-3')
+                    label(class="form-check-label me-3") parking
+                    input(class="form-check-input" name="parking" type="checkbox")
+                div(class="col-3")
+                    label(class="form-check-label me-3") piscine
+                    input(class="form-check-input" name="pool" type="checkbox")
+                div(class="col-3")
+                    label(class="form-check-label me-3") featured
+                    input(class="form-check-input" name="featured" type="checkbox")
+            div(class="mb-3")
+                label(class="form-label") type
+                input(class="form-control" name="type" type="string")
+            div(class="mb-3")
+                label(class="form-label") description
+                textarea(class="form-control" name="description")
+            button(class="btn btn-primary mb-5")  save
+

@@ -1,11 +1,18 @@
 extends ../layout
 block content
     .container
+        h2(class='mt-5 mb-5') Mon compte
+        hr
         form(class="mt-5" action="/compte/"+currentUser._id method='post')
             div(class="mb-3")
                 label(class="form-label") pseudo
                 input(type="text" name="username" class="form-control" value=currentUser.username)
-
+            div(class="mb-3")
+                label(class="form-label") name
+                input(type="text" name="name" class="form-control" value=currentUser.name)
+            div(class="mb-3")
+                label(class="form-label") téléphone
+                input(type="text" name="phone" class="form-control" value=currentUser.phone)
             div(class="mb-3")
                 label(class="form-label") E-mail
                 input(type="email" name="email" class="form-control" value=currentUser.local.email)

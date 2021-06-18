@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
-const propertiesSchema = schema({
+const locationSchema = schema({
 
     title: {
         type: String,
@@ -22,19 +22,17 @@ const propertiesSchema = schema({
 
     country: {type:String},
 
-    sell:{type:Boolean},
-
     details:{
         surface:{type:Number},
         bedroom:{type:Number},
         bathroom:{type:Number},
-        kitchen:{type:Boolean},
-        parking:{type:Boolean},
-        pool:{type:Boolean},
+        kitchen:{type:String},
+        parking:{type:String},
+        pool:{type:String},
         type:{type:String},
     },
 
-    featured:{type:Boolean},
+    featured:{type:String},
 
     description:{type:String},
 
@@ -42,10 +40,10 @@ const propertiesSchema = schema({
 
     gallery:[{type:String}],
 
-    image : { type:String , required:true },
+    image : { type:String },
 
 })
 
 
-const properties = mongoose.model('properties', propertiesSchema)
-module.exports = properties;
+const location = mongoose.model('location', locationSchema)
+module.exports = location;

@@ -10,6 +10,10 @@ const userSchema = schema({
         unique: true,
     },
 
+    name:{String},
+
+    phone:{String},
+
     local: {
         email: {type: String, required: true, unique: true},
         password: {type: String},

@@ -50,6 +50,8 @@ exports.findUserAndUpdate = async (id, user, password) => {
         return User.findByIdAndUpdate(id, {
             $set: {
                 username: user.username,
+                name: user.name,
+                phone: user.phone,
                 local: {
                     email: user.email,
                     password: password
@@ -64,6 +66,8 @@ exports.findUserAndUpdateWithPassword = async (id, user) => {
     return User.findByIdAndUpdate(id, {
         $set: {
             username: user.username,
+            name: user.name,
+            phone: user.phone,
             local: {
                 email: user.email,
                 password: hashedPassword

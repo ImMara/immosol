@@ -5,9 +5,7 @@ block content
         div(class="m-0 p-0 d-flex")
             div(class="w-25 mt-5")
                 a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
-                a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
-                a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
-                a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
+                a(class="btn btn-outline-success m-2" href="/locations/create") Créer un type
             div(class="w-75")
                 h2(class="mt-5")
                     i(class="fas fa-sign me-2")
@@ -18,28 +16,20 @@ block content
                         tr
                             th(scope="col") #
                             th(scope="col") titre
-                            th(scope="col" class="w-50") Addresse
+                            th(scope="col") pays
+                            th(scope="col") contact
+                            th(scope="col") type
+                            th(scope="col") prix
                             th(scope="col") actions
                     tbody
-                        tr
-                            th(scope="row") 1
-                            td Appartement À Louer
-                            td CALLE HAWAI, 03189 VILLAMARTIN, ORIHUELA COSTA, Espagne
-                            td
-                                a(class="btn btn-outline-success me-2") Editer
-                                a(class="btn btn-danger ") delete
-                        tr
-                            th(scope="row") 1
-                            td Appartement À Louer
-                            td CALLE HAWAI, 03189 VILLAMARTIN, ORIHUELA COSTA, Espagne
-                            td
-                                a(class="btn btn-outline-success me-2") Editer
-                                a(class="btn btn-danger ") delete
-                        tr
-                            th(scope="row") 1
-                            td Appartement À Louer
-                            td CALLE HAWAI, 03189 VILLAMARTIN, ORIHUELA COSTA, Espagne
-                            td
-                                a(class="btn btn-outline-success me-2") Editer
-                                a(class="btn btn-danger ") delete
-
+                        each location,key in locations
+                            tr
+                                th(scope="row")= key+1
+                                td= location.title
+                                td= location.country
+                                td= location.contact.name
+                                td= location.details.type
+                                td= location.cost + "€"
+                                td
+                                    a(class="btn btn-outline-success me-2") Editer
+                                    a(class="btn btn-danger ") delete
