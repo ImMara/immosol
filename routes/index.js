@@ -5,11 +5,13 @@ const utilisateurs = require('./utilisateurs/index.route');
 const {logout} = require("../controllers/auth.controller");
 const {login} = require("../controllers/auth.controller");
 const compte = require('./compte/index.route');
+const type = require('./type/index.route');
 
 router.use('/api',api)
 router.use('/locations',locations)
 router.use('/utilisateurs',utilisateurs)
 router.use('/compte',compte)
+router.use('/type', type)
 
 router.get('/', ((req, res) => {
         if (req.user) {

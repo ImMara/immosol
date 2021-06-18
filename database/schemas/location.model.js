@@ -26,13 +26,13 @@ const locationSchema = schema({
         surface:{type:Number},
         bedroom:{type:Number},
         bathroom:{type:Number},
-        kitchen:{type:String},
-        parking:{type:String},
-        pool:{type:String},
+        kitchen:{type:String },
+        parking:{type:String },
+        pool:{ type:String },
         type:{type:String},
     },
 
-    featured:{type:String},
+    featured:{type:String },
 
     description:{type:String},
 
