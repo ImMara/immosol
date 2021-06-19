@@ -65,8 +65,11 @@ block content
                     label(class="form-check-label me-3") featured
                     input(class="form-check-input" name="featured" checked=location&&location.featured&&true type="checkbox")
             div(class="mb-3")
-                label(class="form-label") type
-                input(class="form-control" name="type" value=location&&location.details.type type="string")
+                label(class="form-label") type de bien
+                input(class="form-control" name="type" list="datalistOptions" value=location&&location.details.type placeholder="Type to search...")
+                datalist(id="datalistOptions")
+                    each type in types
+                        option(value=type.title)
             div(class="mb-3")
                 label(class="form-label") description
                 textarea(class="form-control" name="description")= location&&location.description

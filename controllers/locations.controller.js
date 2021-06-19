@@ -1,3 +1,4 @@
+const {findAllType} = require("../database/queries/type.queries");
 const {updateLocation} = require("../database/queries/locations.queries");
 const {deleteLocation} = require("../database/queries/locations.queries");
 const {findLocation} = require("../database/queries/locations.queries");
@@ -15,7 +16,8 @@ exports.getLocations = async (req,res,next) =>{
 
 exports.formLocations = async (req,res,next) =>{
     try{
-        res.render('locations/create',{currentUser: req.user})
+        const types = await findAllType();
+        res.render('locations/create',{currentUser: req.user , types})
     }catch (e){
         next(e)
     }
@@ -53,7 +55,7 @@ exports.createLocations = async(req,res,next) =>{
 
         res.render('locations/index',{
             currentUser: req.user,
-            locations
+            locations,
         })
     }catch (e) {
         next(e)
@@ -64,7 +66,8 @@ exports.getLocation = async (req,res,next) => {
     try{
         const id = req.params.id
         const location = await findLocation(id)
-        res.render('locations/create',{currentUser:req.user ,location})
+        const types = await findAllType();
+        res.render('locations/create',{currentUser:req.user ,location ,types})
     }catch (e) {
         next(e)
     }
