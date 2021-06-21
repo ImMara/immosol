@@ -84,8 +84,6 @@ del.forEach( d => {
         axios.get(`http://localhost/api/delete/gallery/${location}/${position}`)
             .then(res =>{
                 ev.target.parentElement.remove()
-                window.location.reload()
             })
-
     }
 })
