@@ -9,7 +9,7 @@ exports.uploadLocation = multer({
         },
 
         filename: (req, file, callback) => {
-            callback(null, `${Date.now()}-${file.originalname}`)
+            callback(null, `${Math.random()}-${Date.now()}-${file.originalname}`)
         },
 
     }),
