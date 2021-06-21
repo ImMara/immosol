@@ -37,7 +37,7 @@ exports.createLocations = async(req,res,next) =>{
 
             const {filename: gallery} = f
 
-            await sharp(f.path)
+            await sharp(f.file.buffer)
                 .webp({quality:90})
                 .toFile(path.resolve(f.destination,"gallery",gallery))
             fs.unlinkSync(f.path)
@@ -114,7 +114,7 @@ exports.updateLocation = async(req,res,next) => {
 
             const {filename: gallery} = f
 
-            await sharp(f.path)
+            await sharp(f.files.buffer)
                 .webp({quality:90})
                 .toFile(path.resolve(f.destination,"gallery",gallery))
             fs.unlinkSync(f.path)
