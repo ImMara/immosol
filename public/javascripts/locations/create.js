@@ -81,7 +81,7 @@ del.forEach( d => {
     d.onclick = (ev) =>{
         let location = ev.target.getAttribute('location')
         let position = ev.target.getAttribute('pos')
-        axios.get(`http://localhost/api/delete/gallery/${location}/${position}`)
+        axios.put(`http://localhost/api/delete/gallery/${location}/${position}`)
             .then(res =>{
                 ev.target.parentElement.remove()
             })
