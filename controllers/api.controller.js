@@ -21,7 +21,7 @@ exports.deleteOne = async (req,res,next) => {
         let location = await findLocation(id)
         let tab = location.gallery
 
-        // await fs.unlink(path.join(__dirname, `../public/images/locations/gallery/${pos}`), (err => err && console.error(err)))
+        await fs.unlink(path.join(__dirname, `../public/images/locations/gallery/${pos}`), (err => err && console.error(err)))
 
         let index = tab.findIndex((t) => t === pos )
         console.log(index)
