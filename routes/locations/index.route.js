@@ -15,7 +15,10 @@ router.post('/create',
     createLocations
 )
 router.get('/:id', getLocation)
-router.post('/update/:id',updateLocation)
+router.post('/update/:id',
+    uploadLocation.array('gallery',15),
+    updateLocation
+)
 router.get('/delete/:id',deleteLocation)
 
 module.exports = router;

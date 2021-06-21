@@ -77,10 +77,19 @@ block content
                 h4 Gallery d'image
                 a(id="add-line" class="btn btn-primary ms-2") Ajouter une image a la gallery
             hr
-            div(id="input-container")
+            div(id="input-container" count=location? location.gallery.length: 0)
+                if location
+                    .d-flex
+                        for image , key in location.gallery
+                            div(class="mx-2 mb-3")=image
+                                img(src='/images/locations/gallery/'+image)
+                                div(class="delete btn btn-danger" location=location._id pos=key) x
             h4 Image de couverture
             hr
             div(class="mb-3")
                 select(id="cover" name="cover")
+                    if location
+                        for image,key in location.gallery
+                            option=key+1
             button(class="btn btn-primary mb-5") save
     script(src="/javascripts/locations/create.js")

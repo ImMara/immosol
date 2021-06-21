@@ -81,14 +81,12 @@ exports.createLocations = async(req,res,next) =>{
             locations,
         })
     }catch (e) {
-
         if (req.files) {
             for (const f of req.files){
                 const {filename: gallery} = f;
                 fs.unlinkSync(path.resolve(f.destination, "gallery", gallery))
             }
         }
-
         next(e)
     }
 }
@@ -109,8 +107,25 @@ exports.updateLocation = async(req,res,next) => {
         const body = req.body;
         const id = req.params.id
 
+        let findLoca = await findLocation(id)
+        let gal = findLoca.gallery
+
+        for (const f of req.files) {
+
+            const {filename: gallery} = f
+
+            await sharp(f.path)
+                .webp({quality:90})
+                .toFile(path.resolve(f.destination,"gallery",gallery))
+            fs.unlinkSync(f.path)
+        }
+
+        req.files.forEach( f =>{
+            gal.push( f.filename )
+        })
+
         const loca = {
-            title:body.title,
+            title:body.loca,
             contact:{
                 name:body.name,
                 email:body.email,
@@ -130,7 +145,7 @@ exports.updateLocation = async(req,res,next) => {
                 type:body.type
             },
             featured:body.featured,
-            image: body.cover,
+            gallery:gal,
             description:body.description,
             cost:body.cost
         }

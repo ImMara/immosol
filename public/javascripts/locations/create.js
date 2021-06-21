@@ -5,9 +5,11 @@ const container = document.querySelector('#input-container')
 const line = document.querySelector('#add-line')
 // ciblage du selecteur de cover
 const cover = document.querySelector("#cover")
+// ciblage du boutton de suppression edition
+const del = document.querySelectorAll(".delete")
 
 // counter
-let count=0;
+let count=container.getAttribute("count");
 
 // event boutton d'ajout
 line.onclick = () =>{
@@ -33,6 +35,7 @@ line.onclick = () =>{
     input.classList.add('col')
     input.classList.add('mb-3')
 
+
     img.classList.add('col-12')
     img.style.maxHeight='100px';
     img.style.objectFit='cover';
@@ -45,6 +48,7 @@ line.onclick = () =>{
     option.setAttribute('value',(count-1).toString())
     input.setAttribute('name','gallery')
     input.setAttribute('type','file')
+    // input.setAttribute('value','http://localhost/images/locations/gallery/1624285379669-images.png')
     input.setAttribute('accept','.jpg,.jpeg,.png,.gif')
     input.setAttribute('required', true)
 
@@ -73,3 +77,15 @@ line.onclick = () =>{
     // Ajout d'un formulaire
     document.querySelector('#input-container').append(div)
 }
+del.forEach( d => {
+    d.onclick = (ev) =>{
+        let location = ev.target.getAttribute('location')
+        let position = ev.target.getAttribute('pos')
+        axios.get(`http://localhost/api/delete/gallery/${location}/${position}`)
+            .then(res =>{
+                ev.target.parentElement.remove()
+                window.location.reload()
+            })
+
+    }
+})
