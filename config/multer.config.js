@@ -10,7 +10,14 @@ exports.uploadLocation = multer({
 
         filename: (req, file, callback) => {
             callback(null, `${Date.now()}-${file.originalname}`)
-        }
+        },
 
-    })
+    }),
+    fileFilter: function (req, file, callback) {
+        let ext = path.extname(file.originalname);
+        if(ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
+            return callback(new Error('Only images are allowed'))
+        }
+        callback(null, true)
+    },
 })

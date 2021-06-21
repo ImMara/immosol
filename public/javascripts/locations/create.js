@@ -45,6 +45,7 @@ line.onclick = () =>{
     option.setAttribute('value',(count-1).toString())
     input.setAttribute('name','gallery')
     input.setAttribute('type','file')
+    input.setAttribute('accept','.jpg,.jpeg,.png,.gif')
     input.setAttribute('required', true)
 
     // Ajout d'enfant

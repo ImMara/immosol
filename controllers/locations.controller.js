@@ -34,7 +34,9 @@ exports.createLocations = async(req,res,next) =>{
         const galeries = []
 
         for (const f of req.files) {
+
             const {filename: gallery} = f
+
             await sharp(f.path)
                 .webp({quality:90})
                 .toFile(path.resolve(f.destination,"gallery",gallery))
@@ -79,6 +81,14 @@ exports.createLocations = async(req,res,next) =>{
             locations,
         })
     }catch (e) {
+
+        if (req.files) {
+            for (const f of req.files){
+                const {filename: gallery} = f;
+                fs.unlinkSync(path.resolve(f.destination, "gallery", gallery))
+            }
+        }
+
         next(e)
     }
 }
