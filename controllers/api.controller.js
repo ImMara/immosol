@@ -23,7 +23,7 @@ exports.deleteOne = async (req,res,next) => {
 
         // await fs.unlink(path.join(__dirname, `../public/images/locations/gallery/${pos}`), (err => err && console.error(err)))
 
-        const index = tab.findIndex((t) => t === pos )
+        let index = tab.findIndex((t) => t === pos )
         console.log(index)
 
         await tab.splice(index,1)
