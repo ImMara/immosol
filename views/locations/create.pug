@@ -3,12 +3,12 @@ extends ../layout
 block content
     .container
         h2(class="mt-5 mb-5") Ajouts d'une locations
-        form(method="post" action=location? '/locations/update/'+location._id:'/locations/create')
+        form(method="post" action=location? '/locations/update/'+location._id:'/locations/create' enctype="multipart/form-data")
             h4 Titre du bien
             hr
             div(class="mb-3")
                 label(class="form-label") titre
-                input(class="form-control" name="title" value=location&&location.title type="text")
+                input(class="form-control" name="loca" value=location&&location.title type="text")
             h4 Contact pour le bien
             hr
             div(class="mb-3 row")
@@ -73,10 +73,10 @@ block content
             div(class="mb-3")
                 label(class="form-label") description
                 textarea(class="form-control" name="description")= location&&location.description
-            h4 Image de couverture
-            hr
-            div(class="mb-3")
-                input(class="form-control" required name="image" type='file')
+            //h4 Image de couverture
+            //hr
+            //div(class="mb-3")
+            //    input(class="form-control" required name="image" type='file')
             div(class="d-flex align-items-center")
                 h4 Gallery d'image
                 a(id="add-line" class="btn btn-primary ms-2") Ajouter une image a la gallery

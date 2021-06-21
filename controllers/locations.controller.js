@@ -1,3 +1,5 @@
+const fs = require("fs");
+const sharp = require("sharp");
 const {createType} = require("../database/queries/type.queries");
 const {findAllType} = require("../database/queries/type.queries");
 const {updateLocation} = require("../database/queries/locations.queries");
@@ -27,7 +29,6 @@ exports.formLocations = async (req,res,next) =>{
 exports.createLocations = async(req,res,next) =>{
     try{
         const body = req.body;
-        const type = await  findAllType()
 
         // for (let typeKey in type) {
         //     console.log(1,type[typeKey].title)
@@ -37,10 +38,14 @@ exports.createLocations = async(req,res,next) =>{
         //     }
         // }
 
-        console.log(body.gallery)
+        const galeries = []
+
+        req.files.forEach( f =>{
+            galeries.push( f.filename )
+        })
 
         const loca = {
-            title:body.title,
+            title:body.loca,
             contact:{
                 name:body.name,
                 email:body.email,
@@ -59,8 +64,7 @@ exports.createLocations = async(req,res,next) =>{
                 pool:body.pool? body.pool :null,
                 type:body.type,
             },
-            image: body.image,
-            gallery: body.gallery,
+            gallery: galeries,
             featured:body.featured? body.featured :null,
             description:body.description,
             cost:body.cost
