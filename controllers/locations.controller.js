@@ -1,5 +1,6 @@
 const fs = require("fs");
 const sharp = require("sharp");
+const path = require("path");
 const {createType} = require("../database/queries/type.queries");
 const {findAllType} = require("../database/queries/type.queries");
 const {updateLocation} = require("../database/queries/locations.queries");
@@ -137,7 +138,17 @@ exports.updateLocation = async(req,res,next) => {
 exports.deleteLocation = async(req,res,next) => {
     try{
         const id = req.params.id
+        const location = await findLocation(id)
+
+        const image = location.gallery
+
+        image.map(i =>{
+            fs.unlink(path.join(__dirname, `../public/images/locations/gallery/${i}`), (err => err && console.error(err)))
+        })
+
         await deleteLocation(id)
+
+
 
         const locations = await findAllLocations();
         res.render('locations/index',{ locations , currentUser:req.user})
