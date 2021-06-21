@@ -2,7 +2,7 @@ extends ../layout
 
 block content
     .container
-        h2(class="mt-5 mb-5") Ajouts d'une locations
+        h2(class="mt-5 mb-5")= location? "Ajout d'une location": "Editer une location"
         form(method="post" action=location? '/locations/update/'+location._id:'/locations/create' enctype="multipart/form-data")
             h4 Titre du bien
             hr
