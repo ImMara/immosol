@@ -5,21 +5,7 @@ exports.uploadLocation = multer({
     storage: multer.diskStorage({
 
         destination: (req, file, callback) => {
-            callback(null, path.join(__dirname, '../public/images/locations/gallery'))
-        },
-
-        filename: (req, file, callback) => {
-            callback(null, `${Date.now()}-${file.originalname}`)
-        }
-
-    })
-})
-
-exports.uploadCoverLocation = multer({
-    storage: multer.diskStorage({
-
-        destination: (req, file, callback) => {
-            callback(null, path.join(__dirname, '../public/images/locations/cover'))
+            callback(null, path.join(__dirname, '../public/images/locations/'))
         },
 
         filename: (req, file, callback) => {

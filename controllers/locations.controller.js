@@ -31,15 +31,15 @@ exports.createLocations = async(req,res,next) =>{
     try{
         const body = req.body;
 
-        // for (let typeKey in type) {
-        //     console.log(1,type[typeKey].title)
-        //     console.log(2,body.type)
-        //     if( body.type !== type[typeKey].title){
-        //         await createType({ title : body.type})
-        //     }
-        // }
-
         const galeries = []
+
+        for (const f of req.files) {
+            const {filename: gallery} = f
+            await sharp(f.path)
+                .webp({quality:90})
+                .toFile(path.resolve(f.destination,"gallery",gallery))
+            fs.unlinkSync(f.path)
+        }
 
         req.files.forEach( f =>{
             galeries.push( f.filename )
@@ -147,8 +147,6 @@ exports.deleteLocation = async(req,res,next) => {
         })
 
         await deleteLocation(id)
-
-
 
         const locations = await findAllLocations();
         res.render('locations/index',{ locations , currentUser:req.user})
