@@ -37,7 +37,7 @@ exports.createLocations = async(req,res,next) =>{
 
             const {filename: gallery} = f
 
-            await sharp(f.file.buffer)
+            await sharp(f.path)
                 .webp({quality:90})
                 .toFile(path.resolve(f.destination,"gallery",gallery))
             fs.unlinkSync(f.path)
@@ -114,15 +114,15 @@ exports.updateLocation = async(req,res,next) => {
 
             const {filename: gallery} = f
 
-            await sharp(f.files.buffer)
+            await sharp(f.path)
                 .webp({quality:90})
                 .toFile(path.resolve(f.destination,"gallery",gallery))
             fs.unlinkSync(f.path)
         }
 
-        req.files.forEach( f =>{
-            gal.push( f.filename )
-        })
+        for (const f of req.files) {
+            await gal.push( f.filename )
+        }
 
         const loca = {
             title:body.loca,
