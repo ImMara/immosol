@@ -1,49 +1,50 @@
 extends ../layout
 block content
     .container
-        h1(class="mt-5 mb-5") Dashboard
+        h2(class="mt-5 mb-5") Dashboard
             span(class="ms-2 badge bg-secondary") BETA
-        div(class="alert alert-danger" role="alert")
-            A Vous avez + de 3 featured !!!
-        hr
-        h3(class="mb-3") Vente vs Location
+        if featured.length > 3
+            div(class="alert alert-danger" role="alert")
+                A Vous avez + de 3 featured !!!
+            hr
+        h4(class="mb-3") Vente vs Location
         div(class="progress")
             div(class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100")
             div(class="progress-bar progress-bar-striped bg-success" style="width:85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100")
         hr
-        h3(class="mb-3") Stats
-        .d-flex
+        h4(class="mb-3") Stats
+        div(class="d-flex")
             a(type="button" class="btn btn-primary" href="/ventes") Ventes
-                span(class="badge bg-secondary") 4
+                span(class="badge bg-secondary") 0
             a(type="button" class="btn ms-3 btn-success" href="/locations") Locations
-                span(class="badge bg-secondary") 10
-        div(class="d-flex flex-wrap mt-3 mb-3 w-100")
-            div(class="card m-1" style="width:45%")
-                div(class="card-body")
-                    h5(class="card-title") Card title
-                    p(class="card-text") With supporting text below as a natural lead-in to additional content
-                    a(href="#" class="btn btn-primary") Button
-            div(class="card m-1" style="width:45%")
-                div(class="card-body")
-                    h5(class="card-title") Card title
-                    p(class="card-text") With supporting text below as a natural lead-in to additional content
-                    a(href="#" class="btn btn-primary") Button
-            div(class="card  m-1" style="width:45%")
-                div(class="card-body")
-                    h5(class="card-title") Card title
-                    p(class="card-text") With supporting text below as a natural lead-in to additional content
-                    a(href="#" class="btn btn-primary") Button
-            div(class="card m-1" style="width:45%")
-                div(class="card-body")
-                    h5(class="card-title") Card title
-                    p(class="card-text") With supporting text below as a natural lead-in to additional content
-                    a(href="#" class="btn btn-primary") Button
-        hr
-        h3(class="mb-3") Bloc note
-        a(class='btn btn-success mb-3') ajouter une note
-        .note
-            input(type='text' class="form-control my-2")
-            input(type='text' class="form-control my-2")
-        hr
+                span(class="badge bg-secondary")= locations.length
+        h4(class="mt-3") Deux dernieres location ajouter
+        div(class="row mt-3 mb-3 justify-content-center")
+            for l in last
+                div(class="card col-11 m-1 g-0 col-md-5")
+                    if l.gallery.length >0
+                        img(src="/images/locations/gallery/"+l.gallery[l.image] class="card-img-top" alt="..." style="height:200px;object-fit:cover;")
+                    div(class="card-body")
+                        h5(class="card-title")= l.title
+                            span(class="ms-2 badge bg-secondary") New
+                            if l.featured === "on"
+                                span(class="ms-2 badge bg-danger") Featured
+                        p(class="card-text")= "Contact : "+ l.contact.name
+                        p(class="card-text")= "Pays : "+l.country
+                        a(href="/locations/"+l._id class="btn btn-success") Edit
+        h4(class="mt-3") Deux dernieres vente ajouter
+        div(class="row mt-3 mb-3 justify-content-center")
+            for l in last
+                div(class="card col-11 m-1 g-0 col-md-5")
+                    if l.gallery.length > 0
+                        img(src="/images/locations/gallery/" + l.gallery[l.image] class="card-img-top" alt="..." style="height:200px;object-fit:cover;")
+                    div(class="card-body")
+                        h5(class="card-title")= l.title
+                            span(class="ms-2 badge bg-secondary") New
+                            if l.featured === "on"
+                                span(class="ms-2 badge bg-danger") Featured
+                        p(class="card-text")= "Contact : " + l.contact.name
+                        p(class="card-text")= "Pays : " + l.country
+                        a(href="/locations/" + l._id class="btn btn-success") Edit
 
 

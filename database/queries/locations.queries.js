@@ -20,3 +20,11 @@ exports.deleteLocation = (id) =>{
 exports.updateLocation = (id,location)=>{
     return Location.findByIdAndUpdate(id,{$set:location},{runValidators:true});
 }
+
+exports.findFeatured = () =>{
+    return Location.find({featured:'on'});
+}
+
+exports.findLastLocation =(limit) =>{
+    return Location.find().sort({ field: 'asc', _id: -1 }).limit(limit)
+}

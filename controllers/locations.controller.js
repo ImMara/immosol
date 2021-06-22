@@ -68,7 +68,7 @@ exports.createLocations = async(req,res,next) =>{
                 type:body.type,
             },
             gallery: galeries,
-            image:body.cover,
+            image:body.image,
             featured:body.featured? body.featured :null,
             description:body.description,
             cost:body.cost
@@ -146,6 +146,7 @@ exports.updateLocation = async(req,res,next) => {
             },
             featured:body.featured,
             gallery:gal,
+            image:body.image,
             description:body.description,
             cost:body.cost
         }
