@@ -7,6 +7,8 @@ const line = document.querySelector('#add-line')
 const cover = document.querySelector("#cover")
 // ciblage du boutton de suppression edition
 const del = document.querySelectorAll(".delete")
+// ciblage d'image
+const imgC = document.querySelector('#img-container')
 
 // counter
 let count=container.getAttribute("count");
@@ -19,25 +21,33 @@ line.onclick = () =>{
     let a = document.createElement('a')
     let img = document.createElement('img')
     let option = document.createElement('option')
+    let imgDiv = document.createElement('div')
 
     // Ajout de style
     a.classList.add('btn')
     a.classList.add('btn-danger')
-    a.classList.add('me-2')
-    a.classList.add('col-1')
-    a.classList.add('mb-3')
+    a.classList.add('position-absolute')
+    a.classList.add('top-0')
+    a.classList.add('end-0')
+    a.classList.add('rounded-0')
 
-    div.classList.add('row')
+    div.classList.add('d-flex')
+    div.classList.add('flex-column')
+    div.classList.add('align-items-center')
     div.classList.add('mb-3')
     div.classList.add('mx-1')
 
     input.classList.add('form-control')
-    input.classList.add('col')
-    input.classList.add('mb-3')
+    input.classList.add('position-absolute')
+    input.classList.add('bottom-0')
+    input.classList.add('start-0')
+    input.classList.add('rounded-0')
 
-
-    img.classList.add('col-12')
-    img.style.maxHeight='100px';
+    imgDiv.classList.add('mx-2')
+    imgDiv.classList.add('my-1')
+    imgDiv.classList.add('position-relative')
+    img.style.width='200px';
+    img.style.height='200px';
     img.style.objectFit='cover';
     img.style.border='none';
 
@@ -48,7 +58,6 @@ line.onclick = () =>{
     option.setAttribute('value',(count-1).toString())
     input.setAttribute('name','gallery')
     input.setAttribute('type','file')
-    // input.setAttribute('value','http://localhost/images/locations/gallery/1624285379669-images.png')
     input.setAttribute('accept','.jpg,.jpeg,.png,.gif')
     input.setAttribute('required', true)
 
@@ -56,9 +65,11 @@ line.onclick = () =>{
     a.append('x')
     option.append(count)
     cover.append(option)
-    div.append(a)
-    div.append(input)
-    div.append(img)
+    imgDiv.append(img)
+    imgDiv.append(a)
+    imgDiv.append(input)
+    div.append(imgDiv)
+    imgC.append(div)
 
     // event input d'image
     input.onchange = (ev) =>{
@@ -70,15 +81,18 @@ line.onclick = () =>{
 
     // event delete
     a.onclick = (ev) =>{
-        // Supprimer la div parents
-        ev.target.parentElement.remove()
+        // Supprimer la div parent
+        count--
+        cover.removeChild(cover.lastElementChild);
+        ev.target.parentElement.parentElement.remove()
     }
-
     // Ajout d'un formulaire
-    document.querySelector('#input-container').append(div)
+    imgC.append(div)
 }
 del.forEach( d => {
     d.onclick = (ev) =>{
+        count--
+        cover.removeChild(cover.lastElementChild);
         let location = ev.target.getAttribute('location')
         let position = ev.target.getAttribute('pos')
         axios.put(`http://localhost/api/delete/gallery/${location}/${position}`)

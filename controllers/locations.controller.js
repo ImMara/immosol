@@ -40,13 +40,6 @@ exports.createLocations = async(req,res,next) =>{
             await sharp(f.path)
                 .webp({quality:90})
                 .toFile(path.resolve(f.destination,"gallery",gallery))
-                .toBuffer()
-                .then(data => {
-                    console.log("data: ",data);
-                    res.send("File uploaded");
-                }).catch(err =>{
-                    console.log("err: ",err);
-                });
             fs.unlinkSync(f.path)
         }
 

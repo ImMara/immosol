@@ -39,29 +39,29 @@ block content
             h4 Details
             hr
             div(class="mb-3 row")
-                div(class='col-3')
+                div(class='col-6 col-sm-3')
                     label(class="form-label") surface
                     input(class="form-control" value=location&&location.details.surface name="surface" type="number")
-                div(class="col-3")
+                div(class="col-6 col-sm-3")
                     label(class="form-label") chambres
                     input(class="form-control" value=location&&location.details.bedroom name="bedroom" type="number")
-                div(class="col-3")
+                div(class="col-6 col-sm-3")
                     label(class="form-label") salle de bain
                     input(class="form-control" value=location&&location.details.bathroom name="bathroom" type="number")
-                div(class='col-3')
+                div(class='col-6 col-sm-3')
                     label(class="form-label") cost
                     input(class="form-control" value=location&&location.cost name="cost" type="number")
             div(class="mb-3 row")
-                div(class="col-3")
+                div(class="col-6 col-sm-3 d-flex justify-content-center")
                     label(class="form-check-label me-3") cuisine
                     input(class="form-check-input" name="kitchen" checked=location&&location.details.kitchen&&true type="checkbox")
-                div(class='col-3')
+                div(class='col-6 col-sm-3 d-flex justify-content-center')
                     label(class="form-check-label me-3") parking
                     input(class="form-check-input" name="parking" checked=location&&location.details.parking&&true type="checkbox")
-                div(class="col-3")
+                div(class="col-6 col-sm-3 d-flex justify-content-center")
                     label(class="form-check-label me-3") piscine
                     input(class="form-check-input" name="pool" checked=location&&location.details.pool&&true type="checkbox")
-                div(class="col-3")
+                div(class="col-6 col-sm-3 d-flex justify-content-center")
                     label(class="form-check-label me-3") featured
                     input(class="form-check-input" name="featured" checked=location&&location.featured&&true type="checkbox")
             div(class="mb-3")
@@ -75,15 +75,17 @@ block content
                 textarea(class="form-control" name="description")= location&&location.description
             div(class="d-flex align-items-center")
                 h4 Gallery d'image
-                a(id="add-line" class="btn btn-primary ms-2") Ajouter une image a la gallery
+
             hr
             div(id="input-container" count=location? location.gallery.length: 0)
                 if location
-                    .d-flex
+                    div(id="img-container" class="d-flex my-3 flex-wrap justify-content-center")
                         for image , key in location.gallery
-                            div(class="mx-2 mb-3")=image
-                                img(src='/images/locations/gallery/'+image)
-                                div(class="delete btn btn-danger" location=location._id pos=image) x
+                            div(class="mx-2 my-1 position-relative")
+                                input(type='file' hidden)
+                                img(src='/images/locations/gallery/'+image style="width:200px;height:200px;object-fit:cover;")
+                                div(class="delete btn btn-danger position-absolute top-0 end-0 rounded-0" location=location._id pos=image) x
+            a(id="add-line" class="btn btn-primary mb-3 mt-3") Ajouter une image a la gallery
             h4 Image de couverture
             hr
             div(class="mb-3")
