@@ -8,8 +8,8 @@ block content
                 label(class="form-label") type de biens
                 input(class="form-control" name="title" type="text")
             button(class="btn btn-primary") sauvegarder
-        div(class="row mt-5")
+        div(class="row mt-5 mx-2")
             each type in types
-                div(class="col-6 mb-2 mt-2")= type.title
+                div(class="col-6 mb-2 mt-2 border rounded-2 d-flex align-items-center")= type.title
                 div(class="col-6 mb-2 mt-2")
                     a(class="btn btn-danger" href="/type/delete/"+type._id) X

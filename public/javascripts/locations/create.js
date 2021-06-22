@@ -46,8 +46,8 @@ line.onclick = () =>{
     imgDiv.classList.add('mx-2')
     imgDiv.classList.add('my-1')
     imgDiv.classList.add('position-relative')
-    img.style.width='200px';
-    img.style.height='200px';
+    img.style.width='180px';
+    img.style.height='180px';
     img.style.objectFit='cover';
     img.style.border='none';
 

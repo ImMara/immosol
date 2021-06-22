@@ -31,8 +31,8 @@ block content
                 label(class="form-label") city
                 input(class="form-control" value=location&&location.city name="city" type="text")
             div(class="mb-3")
-                label(class="form-label") zip
-                input(class="form-control" value=location&&location.zip name="zip" type="number")
+                label(class="form-label") Region
+                input(class="form-control" value=location&&location.zip name="zip" type="text")
             div(class="mb-3")
                 label(class="form-label") country
                 input(class="form-control" value=location&&location.country name="country" type="text")
@@ -78,20 +78,20 @@ block content
 
             hr
             div(id="input-container" count=location? location.gallery.length: 0)
-                if location
-                    div(id="img-container" class="d-flex my-3 flex-wrap justify-content-center")
-                        for image , key in location.gallery
-                            div(class="mx-2 my-1 position-relative")
-                                input(type='file' hidden)
-                                img(src='/images/locations/gallery/'+image style="width:200px;height:200px;object-fit:cover;")
-                                div(class="delete btn btn-danger position-absolute top-0 end-0 rounded-0" location=location._id pos=image) x
-            a(id="add-line" class="btn btn-primary mb-3 mt-3") Ajouter une image a la gallery
+                    div(id="img-container" class="d-flex ms-sm-5 my-3 flex-wrap justify-content-center justify-content-sm-start")
+                        if location
+                            for image , key in location.gallery
+                                div(class="mx-2 my-1 position-relative")
+                                    input(type='file' hidden)
+                                    img(src='/images/locations/gallery/'+image style="width:180px;height:180px;object-fit:cover;")
+                                    div(class="delete btn btn-danger position-absolute top-0 end-0 rounded-0" location=location._id pos=image) x
+                    a(id="add-line" class="btn btn-outline-success mb-3 mt-3") Ajouter une image
             h4 Image de couverture
             hr
             div(class="mb-3")
-                select(id="cover" name="cover")
+                select(id="cover" class="form-select" name="cover" style="width:75px")
                     if location
                         for image,key in location.gallery
                             option=key+1
-            button(class="btn btn-primary mb-5") save
+            button(class="btn btn-primary mb-5") sauvegarder
     script(src="/javascripts/locations/create.js")

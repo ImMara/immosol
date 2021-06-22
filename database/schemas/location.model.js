@@ -18,7 +18,7 @@ const locationSchema = schema({
 
     city:{type:String},
 
-    zip:{type:Number},
+    zip:{type:String},
 
     country: {type:String},
 
