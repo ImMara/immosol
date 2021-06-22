@@ -2,11 +2,11 @@ extends ../layout
 
 block content
     div(class="container")
-        div(class="m-0 p-0 d-flex")
-            div(class="w-25 mt-5")
-                a(class="btn btn-outline-success m-2" href="/locations/create") Créer une annonces
-                a(class="btn btn-outline-success m-2" href="/type/") Créer un type
-            div(class="w-75")
+        div(class="m-0 p-0 row")
+            div(class="px-3 col-12 col-xl-2 mt-5")
+                a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/locations/create") Créer une annonces
+                a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/type/") Créer un type
+            div(class="px-xl-3 col-12 col-xl-10")
                 h2(class="mt-5")
                     i(class="fas fa-sign me-2")
                     .
@@ -16,20 +16,20 @@ block content
                         tr
                             th(scope="col") #
                             th(scope="col") titre
-                            th(scope="col") pays
+                            th(scope="col" class="d-none d-md-table-cell") pays
                             th(scope="col") contact
                             th(scope="col") type
-                            th(scope="col") prix
+                            th(scope="col" class="d-none d-md-table-cell") prix
                             th(scope="col") actions
                     tbody
                         each location,key in locations
                             tr
                                 th(scope="row")= key+1
                                 td= location.title
-                                td= location.country
+                                td(class="d-none d-md-table-cell")= location.country
                                 td= location.contact.name
                                 td= location.details.type
-                                td= location.cost + "€"
+                                td(class="d-none d-md-table-cell")= location.cost + "€"
                                 td
-                                    a(class="btn btn-outline-success me-2" href="/locations/"+location._id) Editer
-                                    a(class="btn btn-danger" href="/locations/delete/"+location._id) delete
+                                    a(class="btn my-1 my-md-0 btn-outline-success me-2" href="/locations/"+location._id) Editer
+                                    a(class="btn my-1 my-md-0 btn-danger" href="/locations/delete/"+location._id) delete
