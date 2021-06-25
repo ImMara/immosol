@@ -6,18 +6,32 @@ block content
         form(method="post" action=location? '/locations/update/'+location._id:'/locations/create' enctype="multipart/form-data")
             h4 Titre du bien
             hr
-            div(class="mb-3")
-                label(class="form-label") Titre
-                input(class="form-control" name="loca" required="true" value=location&&location.title type="text")
+            div(class="mb-3 row")
+                .col-12
+                    label(class="form-label") Titre
+                .col-12
+                    input(class="form-control" name="loca" required="true" value=location&&location.title type="text")
+                .col-auto
+                    span(class="form-text") required
             h4 Contact pour le bien
             hr
             div(class="mb-3 row")
                 div(class='col-6')
-                    label(class="form-label") Nom et prénom
-                    input(class="form-control" name="name" required="true" type="text" value=location? location.contact.name: currentUser.name )
+                    .row
+                        .col-12
+                            label(class="form-label") Nom et prénom
+                        .col-12
+                            input(class="form-control" name="name" required="true" type="text" value=location? location.contact.name: currentUser.name )
+                        .col-auto
+                            span(class="form-text") required
                 div(class="mb-3 col-6")
-                    label(class="form-label") Email
-                    input(class="form-control" name="email" required="true" value=location? location.contact.email: currentUser.local.email type="text")
+                        .row
+                            .col-12
+                                label(class="form-label") Email
+                            .col-12
+                                input(class="form-control" name="email" required="true" value=location? location.contact.email: currentUser.local.email type="text")
+                            .col-auto
+                                span(class="form-text") required
             div(class="mb-3 row")
                 div(class='col-6')
                     label(class="form-label") N° de téléphone
@@ -28,35 +42,54 @@ block content
             h4 Localisation du bien
             hr
             div(class="mb-3")
-                label(class="form-label") Ville
-                input(class="form-control" required="true" value=location&&location.city name="city" type="text")
+                .row
+                    .col-12
+                        label(class="form-label") Ville
+                    .col-12
+                        input(class="form-control" required="true" value=location&&location.city name="city" type="text")
+                    .col-auto
+                        span(class="form-text") required
             div(class="mb-3")
-                label(class="form-label") Région
-                input(class="form-control" required="true" value=location&&location.zip name="zip" type="text")
+                .row
+                    .col-12
+                        label(class="form-label") Région
+                    .col-12
+                        input(class="form-control" required="true" value=location&&location.zip name="zip" type="text")
+                    .col-auto
+                        span(class="form-text") required
             div(class="mb-3")
-                label(class="form-label") Pays
-                input(class="form-control" required="true" value=location&&location.country name="country" type="text")
+                .row
+                    .col-12
+                        label(class="form-label") Pays
+                    .col-12
+                        input(class="form-control" required="true" value=location&&location.country name="country" type="text")
+                    .col-auto
+                        span(class="form-text") required
             h4 Détails
             hr
             div(class="mb-3 row")
-                div(class='col-6 col-sm-3')
+                div(class='col-4 mb-3 mb-md-0 col-md-2')
                     label(class="form-label") Surface
                     input(class="form-control" value=location&&location.details.surface name="surface" type="number")
-                div(class="col-6 col-sm-3")
+                div(class="col-4 mb-3 mb-md-0 col-md-2")
                     label(class="form-label") Chambres
                     input(class="form-control" value=location&&location.details.bedroom name="bedroom" type="number")
-                div(class="col-6 col-sm-3")
+                div(class="col-4 mb-3 mb-md-0 col-md-2")
                     label(class="form-label") Salle de bain
                     input(class="form-control" value=location&&location.details.bathroom name="bathroom" type="number")
-                div(class='col-6 col-sm-3')
+                div(class='col-12 mb-3 mb-md-0 col-md-3')
                     label(class="form-label") Prix
                     input(class="form-control" value=location&&location.cost name="cost" type="number")
-                div(class='col-6 col-sm-3')
-                        label(class="form-label") Payement
-                        select(class="form-control" value=location && location.payement name="payement" type="string")
-                            option(value="Semaine") Semaine
-                            option(value="Mois") Mois
-
+                div(class='col-12 mb-3 mb-md-0 col-md-3')
+                    .row
+                        .col-12
+                            label(class="form-label") Payement
+                        .col-12
+                            select(class="form-control" value=location && location.payement name="payement" type="string")
+                                option(value="Semaine") Semaine
+                                option(value="Mois") Mois
+                        .col-auto
+                            span(class="form-text") required
             div(class="mb-3 row")
                 div(class="col-6 col-sm-3 d-flex justify-content-center")
                     label(class="form-check-label me-3") Cuisine
@@ -71,15 +104,24 @@ block content
                     label(class="form-check-label me-3") Featured
                     input(class="form-check-input" name="featured" checked=location&&location.featured&&true type="checkbox")
             div(class="mb-3")
-                label(class="form-label") Type de bien
-                input(class="form-control" required="true" name="type" list="datalistOptions" value=location&&location.details.type placeholder="Entrez le type de votre bien...")
+                .row
+                    .col-12
+                        label(class="form-label") Type de bien
+                    .col-12
+                        input(class="form-control" required="true" name="type" list="datalistOptions" value=location&&location.details.type placeholder="Entrez le type de votre bien...")
+                    .col-auto
+                        span(class="form-text") required
                 datalist(id="datalistOptions")
                     each type in types
                         option(value=type.title)
             div(class="mb-3")
-                label(class="form-label") Description
-                textarea(class="form-control" required="true" name="description")= location&&location.description
-            div(class="d-flex align-items-center")
+                .row
+                    .col-12
+                        label(class="form-label") Description
+                    .col-12
+                        textarea(class="form-control" required="true" name="description")= location && location.description
+                    .col-auto
+                        span(class="form-text") required
                 h4 Gallerie d'image
             hr
             div(id="input-container" count=location? location.gallery.length: 0)
