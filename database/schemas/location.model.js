@@ -36,9 +36,9 @@ const locationSchema = schema({
 
     description:{type:String , required: true },
 
-    cost : Number,
+    cost : {type:Number},
 
-    payement : String,
+    payement : {type:String , required:true},
 
     gallery:[{type:String}],
 
