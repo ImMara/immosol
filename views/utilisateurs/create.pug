@@ -2,15 +2,15 @@ extends ../layout
 
 block content
     .container
-        h2(class="mt-5") Creation d'un utilisateur
+        h2(class="mt-5") Créer un nouveau utilisateur
         form(class="mt-5" method="post" action="/utilisateurs/create")
             div(class="mb-3")
                 label(for="pseudo" class="form-label") Pseudo
                 input(type="text" required="true" name="username" class="form-control" id="pseudo")
             div(class="mb-3")
-                label(for="email" class="form-label") email
+                label(for="email" class="form-label") Email
                 input(type="email" required="true" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com")
             div(class="mb-3")
-                 label(for="password" class="form-label") Password
+                 label(for="password" class="form-label") Mot de passe
                  input(type="password" required="true" name="password" class="form-control" id="password")
-            button(class="btn btn-primary")  Envoyer
+            button(class="btn btn-primary")  Créer

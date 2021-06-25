@@ -5,19 +5,19 @@ block content
         hr
         form(class="mt-5" action="/compte/"+currentUser._id method='post')
             div(class="mb-3")
-                label(class="form-label") pseudo
+                label(class="form-label") Pseudo
                 input(type="text" name="username" class="form-control" value=currentUser.username)
             div(class="mb-3")
-                label(class="form-label") name
+                label(class="form-label") Nom et prénom
                 input(type="text" name="name" class="form-control" value=currentUser.name)
             div(class="mb-3")
-                label(class="form-label") téléphone
+                label(class="form-label") N° de téléphone
                 input(type="text" name="phone" class="form-control" value=currentUser.phone)
             div(class="mb-3")
-                label(class="form-label") E-mail
+                label(class="form-label") Email
                 input(type="email" name="email" class="form-control" value=currentUser.local.email)
             div(class="mb-3")
-                label(class="form-label") mot de passe
-                input(type="password" autocomplete="off" name="password" class="form-control" placeholder="•••••••••••••••••••••")
+                label(class="form-label") Mot de passe
+                input(type="password" autocomplete="off" name="password" class="form-control" placeholder="••••••••••••")
             div(class="mb-3")
-                button(class="btn btn-primary") sauvegarder
+                button(class="btn btn-primary") Enregistrer

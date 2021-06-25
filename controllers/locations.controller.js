@@ -71,7 +71,8 @@ exports.createLocations = async(req,res,next) =>{
             image:body.image,
             featured:body.featured? body.featured :null,
             description:body.description,
-            cost:body.cost
+            cost:body.cost,
+            payement:body.payement
         }
         await createLocation(loca);
         const locations = await findAllLocations();
@@ -148,7 +149,8 @@ exports.updateLocation = async(req,res,next) => {
             gallery:gal,
             image:body.image,
             description:body.description,
-            cost:body.cost
+            cost:body.cost,
+            payement:body.payement
         }
 
         await updateLocation(id,loca)

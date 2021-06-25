@@ -9,14 +9,14 @@ block content
                 h2(class="mt-5")
                     i(class="fas fa-users-cog me-2")
                     .
-                        Listes des utilsateurs
+                        Liste des utilisateurs
                 table(class="table mt-5 w-100")
                     thead
                         tr
                             th(scope="col") #
-                            th(scope="col") pseudo
-                            th(scope="col" class="w-50") email
-                            th(scope="col") actions
+                            th(scope="col") Pseudo
+                            th(scope="col" class="w-50") Email
+                            th(scope="col") Action
                     tbody
                         each user , key  in users
                             tr
@@ -25,4 +25,4 @@ block content
                                 td= user.local.email
                                 td
                                     form(method="get" action="/utilisateurs/"+user._id)
-                                        button(class="btn btn-danger") delete
+                                        button(class="btn btn-danger") Supprimer

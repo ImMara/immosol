@@ -4,23 +4,23 @@ block content
     div(class="container")
         div(class="m-0 p-0 row")
             div(class="px-3 col-12 col-xl-2 mt-5")
-                a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/locations/create") Créer une annonces
+                a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/locations/create") Créer une annonce
                 a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/type/") Créer un type
             div(class="px-xl-3 col-12 col-xl-10")
                 h2(class="mt-5")
                     i(class="fas fa-sign me-2")
                     .
-                        Liste de bien a louer
+                        Liste des biens à louer
                 table(class="table mt-5 w-100")
                     thead
                         tr
                             th(scope="col") #
-                            th(scope="col") titre
-                            th(scope="col" class="d-none d-md-table-cell") pays
-                            th(scope="col") contact
-                            th(scope="col") type
-                            th(scope="col" class="d-none d-md-table-cell") prix
-                            th(scope="col") actions
+                            th(scope="col") Titre
+                            th(scope="col" class="d-none d-md-table-cell") Pays
+                            th(scope="col") Contact
+                            th(scope="col") Type
+                            th(scope="col" class="d-none d-md-table-cell") Prix
+                            th(scope="col") Actions
                     tbody
                         each location,key in locations
                             tr
@@ -32,4 +32,4 @@ block content
                                 td(class="d-none d-md-table-cell")= location.cost + "€"
                                 td
                                     a(class="btn my-1 my-md-0 btn-outline-success me-2" href="/locations/"+location._id) Editer
-                                    a(class="btn my-1 my-md-0 btn-danger" href="/locations/delete/"+location._id) delete
+                                    a(class="btn my-1 my-md-0 btn-danger" href="/locations/delete/"+location._id) Supprimer

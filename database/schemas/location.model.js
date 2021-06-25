@@ -38,6 +38,8 @@ const locationSchema = schema({
 
     cost : Number,
 
+    payement : String,
+
     gallery:[{type:String}],
 
     image : { type:String },

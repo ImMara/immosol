@@ -1,13 +1,13 @@
 extends ../layout
 block content
     .container
-        h2(class="mt-5 mb-5") Ajouter un type de bien
+        h2(class="mt-5 mb-5") Créer un nouveau type de bien
 
         form(method='post' action="/type/create")
             div(class="mb-3")
-                label(class="form-label") type de biens
+                label(class="form-label") Label
                 input(class="form-control" name="title" type="text")
-            button(class="btn btn-primary") sauvegarder
+            button(class="btn btn-primary") Enregistrer
         div(class="row mt-5 mx-2")
             each type in types
                 div(class="col-6 mb-2 mt-2 border rounded-2 d-flex align-items-center")= type.title
