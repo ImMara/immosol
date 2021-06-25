@@ -85,7 +85,9 @@ block content
                         .col-12
                             label(class="form-label") Payement
                         .col-12
-                            select(class="form-control" value=location && location.payement name="payement" type="string")
+                            select(class="form-control" name="payement" type="string")
+                                if(location&&location.payement)
+                                    option(value=location.payement selected hidden)= location.payement
                                 option(value="Semaine") Semaine
                                 option(value="Mois") Mois
                         .col-auto
