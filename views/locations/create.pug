@@ -8,16 +8,16 @@ block content
             hr
             div(class="mb-3")
                 label(class="form-label") titre
-                input(class="form-control" name="loca" value=location&&location.title type="text")
+                input(class="form-control" name="loca" required="true" value=location&&location.title type="text")
             h4 Contact pour le bien
             hr
             div(class="mb-3 row")
                 div(class='col-6')
                     label(class="form-label") name
-                    input(class="form-control" name="name" type="text" value=location? location.contact.name: currentUser.name )
+                    input(class="form-control" name="name" required="true" type="text" value=location? location.contact.name: currentUser.name )
                 div(class="mb-3 col-6")
                     label(class="form-label") email
-                    input(class="form-control" name="email" value=location? location.contact.email: currentUser.local.email type="text")
+                    input(class="form-control" name="email" required="true" value=location? location.contact.email: currentUser.local.email type="text")
             div(class="mb-3 row")
                 div(class='col-6')
                     label(class="form-label") phone
@@ -29,13 +29,13 @@ block content
             hr
             div(class="mb-3")
                 label(class="form-label") city
-                input(class="form-control" value=location&&location.city name="city" type="text")
+                input(class="form-control" required="true" value=location&&location.city name="city" type="text")
             div(class="mb-3")
-                label(class="form-label") Region
-                input(class="form-control" value=location&&location.zip name="zip" type="text")
+                label(class="form-label") Région
+                input(class="form-control" required="true" value=location&&location.zip name="zip" type="text")
             div(class="mb-3")
                 label(class="form-label") country
-                input(class="form-control" value=location&&location.country name="country" type="text")
+                input(class="form-control" required="true" value=location&&location.country name="country" type="text")
             h4 Details
             hr
             div(class="mb-3 row")
@@ -66,16 +66,15 @@ block content
                     input(class="form-check-input" name="featured" checked=location&&location.featured&&true type="checkbox")
             div(class="mb-3")
                 label(class="form-label") type de bien
-                input(class="form-control" name="type" list="datalistOptions" value=location&&location.details.type placeholder="Type to search...")
+                input(class="form-control" required="true" name="type" list="datalistOptions" value=location&&location.details.type placeholder="Type to search...")
                 datalist(id="datalistOptions")
                     each type in types
                         option(value=type.title)
             div(class="mb-3")
                 label(class="form-label") description
-                textarea(class="form-control" name="description")= location&&location.description
+                textarea(class="form-control" required="true" name="description")= location&&location.description
             div(class="d-flex align-items-center")
                 h4 Gallery d'image
-
             hr
             div(id="input-container" count=location? location.gallery.length: 0)
                     div(id="img-container" class="d-flex ms-sm-5 my-3 flex-wrap justify-content-center justify-content-sm-start")
@@ -92,6 +91,6 @@ block content
                 select(id="cover" class="form-select" name="image" style="width:75px")
                     if location
                         for image,key in location.gallery
-                            option=key+1
+                            option(value=key)=key+1
             button(class="btn btn-primary mb-5") sauvegarder
     script(src="/javascripts/locations/create.js")

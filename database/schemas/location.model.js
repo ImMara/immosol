@@ -10,17 +10,17 @@ const locationSchema = schema({
     },
 
     contact:{
-        name:{type:String},
-        email:{type:String},
+        name:{type:String , required: true},
+        email:{type:String , required: true},
         phone:{type:String},
         facebook:{type:String}
     },
 
-    city:{type:String},
+    city:{type:String, required: true},
 
-    zip:{type:String},
+    zip:{type:String, required: true},
 
-    country: {type:String},
+    country: {type:String, required: true},
 
     details:{
         surface:{type:Number},
@@ -32,9 +32,9 @@ const locationSchema = schema({
         type:{type:String},
     },
 
-    featured:{type:String },
+    featured:{type:String},
 
-    description:{type:String},
+    description:{type:String , required: true },
 
     cost : Number,
 

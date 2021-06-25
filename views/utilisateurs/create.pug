@@ -6,11 +6,11 @@ block content
         form(class="mt-5" method="post" action="/utilisateurs/create")
             div(class="mb-3")
                 label(for="pseudo" class="form-label") Pseudo
-                input(type="text" name="username" class="form-control" id="pseudo")
+                input(type="text" required="true" name="username" class="form-control" id="pseudo")
             div(class="mb-3")
                 label(for="email" class="form-label") email
-                input(type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com")
+                input(type="email" required="true" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com")
             div(class="mb-3")
                  label(for="password" class="form-label") Password
-                 input(type="password" name="password" class="form-control" id="password")
+                 input(type="password" required="true" name="password" class="form-control" id="password")
             button(class="btn btn-primary")  Envoyer
