@@ -95,7 +95,9 @@ del.forEach( d => {
         cover.removeChild(cover.lastElementChild);
         let location = ev.target.getAttribute('location')
         let position = ev.target.getAttribute('pos')
-        axios.put(`http://localhost/api/delete/gallery/${location}/${position}`)
+        // vps-447d73c6.vps.ovh.net
+        // localhost
+        axios.put(`http://vps-447d73c6.vps.ovh.net/api/delete/gallery/${location}/${position}`)
             .then(res =>{
                 ev.target.parentElement.remove()
             })
