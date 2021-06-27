@@ -10,37 +10,39 @@ const venteSchema = schema({
     },
 
     contact:{
-        name:{type:String},
-        email:{type:String},
+        name:{type:String , required: true},
+        email:{type:String , required: true},
         phone:{type:String},
         facebook:{type:String}
     },
 
-    city:{type:String},
+    city:{type:String, required: true},
 
-    zip:{type:Number},
+    zip:{type:String, required: true},
 
-    country: {type:String},
+    country: {type:String, required: true},
 
     details:{
         surface:{type:Number},
         bedroom:{type:Number},
         bathroom:{type:Number},
-        kitchen:{type:Boolean},
-        parking:{type:Boolean},
-        pool:{type:Boolean},
+        kitchen:{type:String },
+        parking:{type:String },
+        pool:{ type:String },
         type:{type:String},
     },
 
-    featured:{type:Boolean},
+    featured:{type:String},
 
-    description:{type:String},
+    description:{type:String , required: true },
 
-    cost : Number,
+    cost : {type:Number},
 
     gallery:[{type:String}],
 
-    image : { type:String , required:true },
+    image : { type:String },
+
+    sold: {type:String , required:true},
 
 })
 

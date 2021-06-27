@@ -7,6 +7,8 @@ const {login} = require("../controllers/auth.controller");
 const compte = require('./compte/index.route');
 const type = require('./type/index.route');
 const vente = require('./ventes/index.route');
+const {findLastVente} = require("../database/queries/vente.queries");
+const {findAllVente} = require("../database/queries/vente.queries");
 const {findLastLocation} = require("../database/queries/locations.queries");
 const {findFeatured} = require("../database/queries/locations.queries");
 const {findAllLocations} = require("../database/queries/locations.queries");
@@ -33,8 +35,10 @@ router.get('/logout', logout);
 router.get('/dashboard',async (req,res,next)=>{
         const locations = await findAllLocations()
         const featured = await findFeatured();
+        const ventes = await findAllVente();
         const last = await findLastLocation(2);
-        res.render('dashboard/index',{ currentUser : req.user,locations , featured , last});
+        const lastVente = await findLastVente(2);
+        res.render('dashboard/index',{ currentUser : req.user,locations , featured , last , ventes , lastVente});
 })
 
 

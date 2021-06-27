@@ -1,3 +1,35 @@
 extends ../layout
+
 block content
-    h2 vente
+    div(class="container")
+        div(class="m-0 p-0 row")
+            div(class="px-3 col-12 col-xl-2 mt-5")
+                a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/ventes/create") Créer une annonce
+                a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/type/") Créer un type
+            div(class="px-xl-3 col-12 col-xl-10")
+                h2(class="mt-5")
+                    i(class="fas fa-sign me-2")
+                    .
+                        Liste des biens à vendre
+                table(class="table mt-5 w-100")
+                    thead
+                        tr
+                            th(scope="col") #
+                            th(scope="col") Titre
+                            th(scope="col" class="d-none d-md-table-cell") Pays
+                            th(scope="col") Contact
+                            th(scope="col") Vente
+                            th(scope="col" class="d-none d-md-table-cell") Prix
+                            th(scope="col") Actions
+                    tbody
+                         each vente,key in ventes
+                             tr
+                                 th(scope="row")= key+1
+                                 td= vente.title
+                                 td(class="d-none d-md-table-cell")= vente.country
+                                 td= vente.contact.name
+                                 td= vente.sold
+                                 td(class="d-none d-md-table-cell")= vente.cost + "€"
+                                 td
+                                     a(class="btn my-1 my-md-0 btn-outline-success me-2" href="/ventes/"+vente._id) Editer
+                                     a(class="btn my-1 my-md-0 btn-danger" href="/ventes/delete/"+vente._id) Supprimer
