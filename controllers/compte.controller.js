@@ -5,7 +5,7 @@ const {findUserAndUpdate} = require("../database/queries/user.queries");
 
 exports.getCompte = async (req,res,next) =>{
     try{
-        const message = req.params.success
+        const message = req.query.success
         res.render('compte/index',{currentUser: req.user , message})
     }catch (e) {
         next(e)

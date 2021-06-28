@@ -1,5 +1,7 @@
 const path = require("path");
 const fs = require("fs");
+const {findAllVente} = require("../database/queries/vente.queries");
+const {findAllLocations} = require("../database/queries/locations.queries");
 const {findVente} = require("../database/queries/vente.queries");
 const {updateVente} = require("../database/queries/vente.queries");
 const {updateLocation} = require("../database/queries/locations.queries");
@@ -55,6 +57,41 @@ exports.deleteOneVente = async (req,res,next)=>{
         await updateVente(id,{...vente , gallery : tab })
         res.end()
 
+    }catch (e) {
+        next(e)
+    }
+}
+exports.getLocations = async (req,res,next) =>{
+    try{
+        const locations = await findAllLocations();
+        res.json({locations})
+    }catch (e) {
+        next(e)
+    }
+}
+exports.getLocation = async (req,res,next)=>{
+    try{
+        const id = req.params.id
+        const location = await findLocation(id);
+        res.json({location})
+    }catch (e) {
+        next(e)
+    }
+}
+
+exports.getVentes = async (req,res,next) =>{
+    try{
+        const ventes = await findAllVente();
+        res.json({ventes})
+    }catch (e) {
+        next(e)
+    }
+}
+exports.getVente = async (req,res,next)=>{
+    try{
+        const id = req.params.id
+        const vente = await findVente(id)
+        res.json({vente})
     }catch (e) {
         next(e)
     }

@@ -2,11 +2,6 @@ extends ../layout
 block content
     .container
         h2(class="mt-5 mb-5") Dashboard
-            span(class="ms-2 badge bg-secondary") BETA
-        if featured.length > 3
-            div(class="alert alert-danger" role="alert")
-                A Vous avez + de 3 featured !!!
-            hr
         h4(class="mb-3") Vente vs Location
         div(class="progress")
             div(class="progress-bar progress-bar-striped" role="progressbar" style="width:"+((ventes.length/(ventes.length+locations.length))*100)+"%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100")

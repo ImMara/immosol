@@ -1,6 +1,11 @@
 extends ../layout
 block content
     .container
+        if message
+            div(class="toast align-items-center text-white bg-success border-0 w-100" role="alert" aria-live="polite" aria-atomic="true")
+                div(class="d-flex mt-5")
+                    div(class="toast-body")= message
+                    button(type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close")
         h2(class='mt-5 mb-5') Mon compte
         hr
         form(class="mt-5" action="/compte/"+currentUser._id method='post')
@@ -21,3 +26,7 @@ block content
                 input(type="password" autocomplete="off" name="password" class="form-control" placeholder="••••••••••••")
             div(class="mb-3")
                 button(class="btn btn-primary") Enregistrer
+    script.
+        var myAlert = document.querySelector('.toast');//select id of toast
+        var bsAlert = new bootstrap.Toast(myAlert, {autohide: false});//inizialize it
+        bsAlert.show();//show it
