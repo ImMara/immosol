@@ -11,8 +11,9 @@ const {createLocation} = require("../database/queries/locations.queries");
 
 exports.getLocations = async (req,res,next) =>{
     try{
+        const message = req.query.success
         const locations = await findAllLocations();
-        res.render('locations/index',{currentUser: req.user , locations})
+        res.render('locations/index',{currentUser: req.user , locations , message})
     }catch (e) {
         next(e)
     }
@@ -75,12 +76,11 @@ exports.createLocations = async(req,res,next) =>{
             payement:body.payement
         }
         await createLocation(loca);
-        const locations = await findAllLocations();
 
-        res.render('locations/index',{
-            currentUser: req.user,
-            locations,
-        })
+        const string = `Creation d'une nouvelle location : ${body.loca}`
+
+        res.redirect('/locations/?success='+string)
+
     }catch (e) {
         if (req.files) {
             for (const f of req.files){
@@ -155,8 +155,8 @@ exports.updateLocation = async(req,res,next) => {
 
         await updateLocation(id,loca)
 
-        const locations = await findAllLocations();
-        res.render('locations/index',{ locations , currentUser:req.user })
+        const string = `mise a jour du blog ${findLoca.title}`
+        res.redirect('/locations/?success= '+string)
 
     }catch (e) {
         next(e)
@@ -176,8 +176,8 @@ exports.deleteLocation = async(req,res,next) => {
 
         await deleteLocation(id)
 
-        const locations = await findAllLocations();
-        res.render('locations/index',{ locations , currentUser:req.user})
+        const string = `Supression de la location ${location.title}`
+        res.redirect('/locations/?success='+string)
 
     }catch (e) {
         next(e)

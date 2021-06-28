@@ -11,7 +11,8 @@ const {findAllVente} = require("../database/queries/vente.queries");
 exports.getVentes = async( req,res,next)=> {
     try {
         const ventes = await findAllVente();
-        res.render('ventes/index', {currentUser: req.user, ventes})
+        const message = req.query.success;
+        res.render('ventes/index', { currentUser: req.user, ventes , message })
     } catch (e) {
         next(e)
     }
@@ -74,12 +75,10 @@ exports.createVentes = async(req,res,next) =>{
             sold:body.sold
         }
         await createVente(v);
-        const ventes = await findAllVente();
 
-        res.render('ventes/index',{
-            currentUser: req.user,
-            ventes,
-        })
+        const string = `Creation d'une nouvelle vente : ${body.title}`
+
+        res.redirect('/ventes/?success='+string)
     }catch (e) {
         if (req.files) {
             for (const f of req.files){
@@ -154,8 +153,8 @@ exports.updateVente = async(req,res,next) => {
 
         await updateVente(id,v)
 
-        const ventes = await findAllVente();
-        res.render('ventes/index',{ ventes , currentUser:req.user })
+        const string = `Update success ${id}`
+        res.redirect('/ventes/?success='+string)
 
     }catch (e) {
         next(e)
@@ -175,8 +174,9 @@ exports.deleteVente = async(req,res,next) => {
 
         await deleteVente(id)
 
-        const ventes = await findAllVente();
-        res.render('ventes/index',{ ventes , currentUser:req.user})
+        const string = `delete success ${id}`
+
+        res.redirect('/ventes/?success='+string)
 
     }catch (e) {
         next(e)

@@ -1,10 +1,12 @@
 const {deleteType} = require("../database/queries/type.queries");
 const {findAllType} = require("../database/queries/type.queries");
 const {createType} = require("../database/queries/type.queries");
+
 exports.getType = async (req,res,next) =>{
     try{
         const types = await findAllType();
-        res.render('type/index',{currentUser:req.user, types})
+        const message = req.query.success
+        res.render('type/index',{currentUser:req.user, types , message})
     }catch (e) {
         next(e)
     }
@@ -14,8 +16,9 @@ exports.getType = async (req,res,next) =>{
     try{
         const body = req.body;
         await createType(body);
-        const types = await findAllType()
-        res.render('type/index',{currentUser : req.user , types})
+
+        const string = `creation du type ${body.title}`
+        res.redirect('/type/?success='+string)
     }catch (e) {
      next(e)
     }
@@ -25,9 +28,8 @@ exports.getType = async (req,res,next) =>{
     try{
         const id = req.params.id
         await deleteType(id)
-
-        const types = await findAllType();
-        res.render('type/index',{currentUser : req.user , types})
+        const string =`suppression du type ${id}`
+        res.redirect('/type/?success='+string)
     }catch (e) {
         next(e)
     }

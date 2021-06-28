@@ -5,7 +5,8 @@ const {findUserAndUpdate} = require("../database/queries/user.queries");
 
 exports.getCompte = async (req,res,next) =>{
     try{
-        res.render('compte/index',{currentUser: req.user})
+        const message = req.params.success
+        res.render('compte/index',{currentUser: req.user , message})
     }catch (e) {
         next(e)
     }
@@ -24,8 +25,10 @@ exports.updateCompte = async (req,res,next) => {
             await findUserAndUpdateWithPassword(id,body);
         }
 
-        const user = await findUser(id);
-        res.render('compte/index',{currentUser:user})
+        const string = `Mise a jour du compte ${id} reussie`
+
+        res.redirect('/compte/?success='+string)
+
     }catch (e) {
         next(e)
     }

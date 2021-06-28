@@ -4,6 +4,7 @@ const {findVente} = require("../database/queries/vente.queries");
 const {updateVente} = require("../database/queries/vente.queries");
 const {updateLocation} = require("../database/queries/locations.queries");
 const {findLocation} = require("../database/queries/locations.queries");
+
 exports.example = async (req,res,next) =>{
     try{
         res.json({

@@ -7,6 +7,11 @@ block content
                 a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/ventes/create") Créer une annonce
                 a(class="d-xl-block mx-1 btn btn-outline-success my-1" href="/type/") Créer un type
             div(class="px-xl-3 col-12 col-xl-10")
+                if message
+                    div(class="toast align-items-center text-white bg-success border-0 w-100" role="alert" aria-live="polite" aria-atomic="true")
+                        div(class="d-flex mt-5")
+                            div(class="toast-body")= message
+                            button(type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close")
                 h2(class="mt-5")
                     i(class="fas fa-sign me-2")
                     .
@@ -33,3 +38,7 @@ block content
                                  td
                                      a(class="btn my-1 my-md-0 btn-outline-success me-2" href="/ventes/"+vente._id) Editer
                                      a(class="btn my-1 my-md-0 btn-danger" href="/ventes/delete/"+vente._id) Supprimer
+    script.
+        var myAlert = document.querySelector('.toast');//select id of toast
+        var bsAlert = new bootstrap.Toast(myAlert, {autohide: false});//inizialize it
+        bsAlert.show();//show it

@@ -6,7 +6,8 @@ const {findAllUsers} = require("../database/queries/user.queries");
 exports.getUtilisateurs = async (req,res,next) =>{
     try{
         const users = await findAllUsers();
-        res.render('utilisateurs/index',{ users ,currentUser: req.user})
+        const message = req.query.success;
+        res.render('utilisateurs/index',{ users ,currentUser: req.user , message})
     }catch (e) {
         next(e)
     }
@@ -24,8 +25,8 @@ exports.createUtilisateur = async (req,res,next) =>{
     try{
         const body = req.body;
         await createUser(body);
-        const users = await findAllUsers();
-        res.render('utilisateurs/index',{ users, success: `successfully added ${body.username}`, currentUser: req.user});
+        const string = `creation d'un utilisateur ${body.username}`
+        res.redirect('/utilisateurs/?success='+string);
     }catch (e) {
         next(e)
     }
@@ -33,12 +34,10 @@ exports.createUtilisateur = async (req,res,next) =>{
 
 exports.deleteUtilisateur = async (req,res,next) =>{
     const userID = req.params.id;
-    const user = await findUser(userID);
     try{
-        let name = user.username;
         await deleteUsers(userID);
-        const users = await findAllUsers();
-        res.render('utilisateurs/index',{ users, success: `successfully deleted ${name}`, currentUser: req.user})
+        const string = `suppression de l'utilisateur ${userID}`
+        res.redirect('/utilisateurs/?success='+string)
     }catch (e) {
         next(e)
     }
