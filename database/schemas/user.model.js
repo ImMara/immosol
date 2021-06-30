@@ -6,7 +6,7 @@ const userSchema = schema({
 
     username: {
         type: String,
-        required: true,
+        required: [true, "L'utilisateur doit avoir un nom/pseudo"],
         unique: true,
     },
 
@@ -15,7 +15,7 @@ const userSchema = schema({
     phone:{String},
 
     local: {
-        email: {type: String, required: true, unique: true},
+        email: {type: String, required: [true, "L'utilisateur doit avoir un email"], unique: true},
         password: {type: String},
     }
 

@@ -5,22 +5,24 @@ const locationSchema = schema({
 
     title: {
         type: String,
-        required: true,
+        required: [true, 'Votre annnonce doit avoir un titre'],
         unique: true,
+        minLength: [3, 'Le titre est trop court'],
+        maxLength: [300, 'Le titre est trop long'],
     },
 
     contact:{
-        name:{type:String , required: true},
-        email:{type:String , required: true},
+        name:{type:String , required:[true, 'Le contact doit avoir un nom et/ou prénom']},
+        email:{type:String , required: [true, 'Le contact doit avoir un email']},
         phone:{type:String},
         facebook:{type:String}
     },
 
-    city:{type:String, required: true},
+    city:{type:String, required: [true, 'Veuillez entrer le nom de la ville']},
 
-    zip:{type:String, required: true},
+    zip:{type:String, required: [true, 'Veuillez entrer le nom de la région']},
 
-    country: {type:String, required: true},
+    country: {type:String, required: [true, 'Veuillez entrer le pays']},
 
     details:{
         surface:{type:Number},
@@ -34,11 +36,15 @@ const locationSchema = schema({
 
     featured:{type:String},
 
-    description:{type:String , required: true },
+    description:{
+        type:String ,
+        required: [true, 'Veuillez écrire une description'],
+        minLength: [3, 'La description est trop courte'],
+    },
 
     cost : {type:Number},
 
-    payement : {type:String , required:true},
+    payement : {type:String , required: [true, 'Veuillez sélectionner une option']},
 
     gallery:[{type:String}],
 
