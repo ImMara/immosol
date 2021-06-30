@@ -34,5 +34,7 @@
     "pug": "^3.0.2",
     "sharp": "^0.28.1"
   },
-  "resolutions": { "sharp": "0.24.0" }
+  "resolutions": {
+    "sharp": "0.24.0"
+  }
 }
