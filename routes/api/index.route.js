@@ -1,3 +1,4 @@
+const {getVentesAndLocations} = require("../../controllers/api.controller");
 const {getVente} = require("../../controllers/api.controller");
 const {getVentes} = require("../../controllers/api.controller");
 const {getLocation} = require("../../controllers/api.controller");
@@ -14,5 +15,6 @@ router.get('/locations',getLocations)
 router.get('/location/:id',getLocation)
 router.get('/ventes',getVentes)
 router.get('/vente/:id',getVente)
+router.get('/all/:limit',getVentesAndLocations)
 
 module.exports = router;

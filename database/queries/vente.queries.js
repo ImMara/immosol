@@ -1,4 +1,5 @@
 const Vente = require('../schemas/vente.model');
+const Location = require('../schemas/location.model');
 
 exports.findAllVente = () =>{
     return Vente.find();
@@ -27,4 +28,11 @@ exports.findFeatured = () =>{
 
 exports.findLastVente = (limit) =>{
     return Vente.find().sort({field:'asc',_id:-1}).limit(limit)
+}
+
+exports.findVenteAndLocation = (limit) =>{
+    return Promise.all([
+            Location.find().sort({ field: 'asc', _id: -1 }).limit(limit),
+            Vente.find().sort({field: 'desc', _id: -1}).limit(limit)
+    ])
 }

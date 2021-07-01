@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const {findVenteAndLocation} = require("../database/queries/vente.queries");
 const {findAllVente} = require("../database/queries/vente.queries");
 const {findAllLocations} = require("../database/queries/locations.queries");
 const {findVente} = require("../database/queries/vente.queries");
@@ -87,11 +88,22 @@ exports.getVentes = async (req,res,next) =>{
         next(e)
     }
 }
+
 exports.getVente = async (req,res,next)=>{
     try{
         const id = req.params.id
         const vente = await findVente(id)
         res.json({vente})
+    }catch (e) {
+        next(e)
+    }
+}
+
+exports.getVentesAndLocations = async(req,res,next) =>{
+    try{
+        const limit = req.params.limit
+        const query = await findVenteAndLocation(parseInt(limit))
+        res.json({query})
     }catch (e) {
         next(e)
     }
