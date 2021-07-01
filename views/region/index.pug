@@ -11,12 +11,12 @@ block content
                 .col-12
                     label(class="form-label") Titre
                 .col-12
-                    input(class="form-control" name="title" required="true" value=region[0].title)
+                    input(class="form-control" minLength="3" maxLength="300" name="title" required="true" value=region[0].title)
             div(class="mb-3 row")
                 .col-12
                     label(class="form-label") Description
                 .col-12
-                    textarea(class="form-control" name="description" required="true" style="height:350px")= region[0].description
+                    textarea(class="form-control" name="description" minLength="3" required="true" style="height:350px")= region[0].description
             div(id="input-container" count= region[0].gallery.length )
                 div(id="img-container" class="d-flex ms-sm-5 my-3 flex-wrap justify-content-center justify-content-sm-start")
                         for image , key in region[0].gallery
