@@ -6,18 +6,21 @@ const {formLocations} = require("../../controllers/locations.controller");
 const {createLocations} = require("../../controllers/locations.controller");
 const {getLocations} = require("../../controllers/locations.controller");
 const router = require('express').Router();
+const {ensureAuthenticated} = require("../../config/guards.config");
 
-router.get('/', getLocations )
-router.get('/create',formLocations)
+router.get('/',ensureAuthenticated, getLocations )
+router.get('/create',ensureAuthenticated,formLocations)
 router.post('/create',
+    ensureAuthenticated,
     uploadLocation.array('gallery',15),
     createLocations
 )
-router.get('/:id', getLocation)
+router.get('/:id',ensureAuthenticated, getLocation)
 router.post('/update/:id',
+    ensureAuthenticated,
     uploadLocation.array('gallery',15),
     updateLocation
 )
-router.get('/delete/:id',deleteLocation)
+router.get('/delete/:id',ensureAuthenticated,deleteLocation)
 
 module.exports = router;
