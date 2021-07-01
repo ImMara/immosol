@@ -7,6 +7,7 @@ const {login} = require("../controllers/auth.controller");
 const compte = require('./compte/index.route');
 const type = require('./type/index.route');
 const vente = require('./ventes/index.route');
+const region = require('./region/index.routes');
 const {findLastVente} = require("../database/queries/vente.queries");
 const {findAllVente} = require("../database/queries/vente.queries");
 const {findLastLocation} = require("../database/queries/locations.queries");
@@ -19,6 +20,7 @@ router.use('/utilisateurs',utilisateurs)
 router.use('/compte',compte)
 router.use('/type', type)
 router.use('/ventes',vente)
+router.use('/region',region)
 
 router.get('/', ((req, res) => {
         if (req.user) {

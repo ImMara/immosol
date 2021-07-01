@@ -62,6 +62,28 @@ exports.deleteOneVente = async (req,res,next)=>{
         next(e)
     }
 }
+
+exports.deleteOneRegion = async (req,res,next)=>{
+    try{
+        const id = req.params.id
+        const pos = req.params.pos
+
+        let region = await findRegion(id)
+        let tab = region.gallery
+
+        await fs.unlink(path.join(__dirname, `../public/images/regions/gallery/${pos}`),(err => err && console.error(err)))
+
+        let index = tab.findIndex((t)=> t === pos)
+
+        await tab.splice(index,1)
+        await updateRegion(id,{...region,gallery : tab})
+        res.end()
+
+    }catch (e) {
+        next(e)
+    }
+}
+
 exports.getLocations = async (req,res,next) =>{
     try{
         const locations = await findAllLocations();

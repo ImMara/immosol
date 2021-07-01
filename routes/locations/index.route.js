@@ -1,4 +1,3 @@
-const {uploadCoverLocation} = require("../../config/multer.config");
 const {uploadLocation} = require("../../config/multer.config");
 const {deleteLocation} = require("../../controllers/locations.controller");
 const {updateLocation} = require("../../controllers/locations.controller");
