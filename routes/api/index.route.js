@@ -19,6 +19,6 @@ router.get('/location/:id',getLocation)
 router.get('/ventes',getVentes)
 router.get('/region',getRegion)
 router.get('/vente/:id',getVente)
-router.get('/all/:limit',getVentesAndLocations)
+router.get('/featured',getVentesAndLocations)
 
 module.exports = router;

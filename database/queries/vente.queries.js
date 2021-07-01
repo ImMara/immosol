@@ -30,9 +30,9 @@ exports.findLastVente = (limit) =>{
     return Vente.find().sort({field:'asc',_id:-1}).limit(limit)
 }
 
-exports.findVenteAndLocation = (limit) =>{
+exports.findVenteAndLocation = () =>{
     return Promise.all([
-            Location.find().sort({ field: 'asc', _id: -1 }).limit(limit),
-            Vente.find().sort({field: 'desc', _id: -1}).limit(limit)
+            Location.find().where('featured').equals('on'),
+            Vente.find().where('featured').equals('on')
     ])
 }
