@@ -121,6 +121,14 @@ exports.getVente = async (req,res,next)=>{
         next(e)
     }
 }
+exports.getRegion = async (req,res,next) =>{
+    try {
+        const region = await findRegion()
+        res.json({region})
+    }catch (e) {
+        next(e)
+    }
+}
 
 exports.getVentesAndLocations = async(req,res,next) =>{
     try{

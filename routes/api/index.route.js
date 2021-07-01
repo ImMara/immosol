@@ -1,3 +1,4 @@
+const {getRegion} = require("../../controllers/api.controller");
 const {deleteOneRegion} = require("../../controllers/api.controller");
 const {getVentesAndLocations} = require("../../controllers/api.controller");
 const {getVente} = require("../../controllers/api.controller");
@@ -16,6 +17,7 @@ router.put('/region/delete/gallery/:id/:pos',deleteOneRegion)
 router.get('/locations',getLocations)
 router.get('/location/:id',getLocation)
 router.get('/ventes',getVentes)
+router.get('/region',getRegion)
 router.get('/vente/:id',getVente)
 router.get('/all/:limit',getVentesAndLocations)
 
