@@ -1,4 +1,4 @@
-const Region = require('../schemas/location.model');
+const Region = require('../schemas/region.model');
 
 exports.findRegion = () =>{
     return Region.find();

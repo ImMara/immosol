@@ -1,5 +1,8 @@
 const path = require("path");
 const fs = require("fs");
+const {findRegionId} = require("../database/queries/region.queries");
+const {findRegion} = require("../database/queries/region.queries");
+const {updateRegion} = require("../database/queries/region.queries");
 const {findVenteAndLocation} = require("../database/queries/vente.queries");
 const {findAllVente} = require("../database/queries/vente.queries");
 const {findAllLocations} = require("../database/queries/locations.queries");
@@ -30,7 +33,6 @@ exports.deleteOne = async (req,res,next) => {
         await fs.unlink(path.join(__dirname, `../public/images/locations/gallery/${pos}`), (err => err && console.error(err)))
 
         let index = tab.findIndex((t) => t === pos )
-        console.log(index)
 
         await tab.splice(index,1)
         await updateLocation(id,{...location , gallery : tab })
@@ -52,7 +54,6 @@ exports.deleteOneVente = async (req,res,next)=>{
         await fs.unlink(path.join(__dirname, `../public/images/ventes/gallery/${pos}`), (err => err && console.error(err)))
 
         let index = tab.findIndex((t) => t === pos )
-        console.log(index)
 
         await tab.splice(index,1)
         await updateVente(id,{...vente , gallery : tab })
@@ -68,10 +69,10 @@ exports.deleteOneRegion = async (req,res,next)=>{
         const id = req.params.id
         const pos = req.params.pos
 
-        let region = await findRegion(id)
+        let region = await findRegionId(id)
         let tab = region.gallery
 
-        await fs.unlink(path.join(__dirname, `../public/images/regions/gallery/${pos}`),(err => err && console.error(err)))
+        await fs.unlink(path.join(__dirname, `../public/images/region/gallery/${pos}`),(err => err && console.error(err)))
 
         let index = tab.findIndex((t)=> t === pos)
 

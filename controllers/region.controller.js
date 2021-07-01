@@ -1,8 +1,9 @@
 const sharp = require("sharp");
+const fs = require("fs");
+const path = require("path");
 const {findRegionId} = require("../database/queries/region.queries");
 const {updateRegion} = require("../database/queries/region.queries");
 const {findRegion} = require("../database/queries/region.queries");
-
 
 exports.getRegion = async (req, res,next) =>{
     try{
@@ -27,6 +28,7 @@ exports.updateRegion = async (req, res, next) =>{
             await sharp(f.path)
                 .webp({quality:90})
                 .toFile(path.resolve(f.destination,"gallery",gallery))
+            fs.unlinkSync(f.path)
         }
         for (const f of req.files){
             await gallery.push(f.filename)

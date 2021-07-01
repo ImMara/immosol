@@ -4,7 +4,7 @@ const {getRegion} = require("../../controllers/region.controller");
 const router = require('express').Router();
 
 router.get('/', getRegion)
-router.get('/update/:id',
+router.post('/update/:id',
     uploadRegion.array('gallery',15),
     updateRegion
 )
