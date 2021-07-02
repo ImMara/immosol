@@ -12,7 +12,6 @@ const regionSchema = schema({
     description:{
         type:String ,
         required: [true, 'Veuillez écrire une description'],
-        minLength: [3, 'La description est trop courte'],
     },
     gallery:[{type:String}],
 })
