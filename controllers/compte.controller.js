@@ -25,7 +25,7 @@ exports.updateCompte = async (req,res,next) => {
             await findUserAndUpdateWithPassword(id,body);
         }
 
-        const string = `Mise a jour du compte ${id} reussie`
+        const string = `Mise à jour du compte ${id} réussie`
 
         res.redirect('/compte/?success='+string)
 
