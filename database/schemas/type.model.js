@@ -7,7 +7,6 @@ const typeSchema = schema({
         type: String,
         required: [true, 'Nommez le nouveau type de bien'],
         unique: true,
-        minLength: [3, 'Le nom du type est trop court'],
         maxLength: [100, 'Le nom du type est trop long'],
     },
 

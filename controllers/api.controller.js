@@ -1,5 +1,9 @@
 const path = require("path");
 const fs = require("fs");
+const {findRegionId} = require("../database/queries/region.queries");
+const {findRegion} = require("../database/queries/region.queries");
+const {updateRegion} = require("../database/queries/region.queries");
+const {findVenteAndLocation} = require("../database/queries/vente.queries");
 const {findAllVente} = require("../database/queries/vente.queries");
 const {findAllLocations} = require("../database/queries/locations.queries");
 const {findVente} = require("../database/queries/vente.queries");
@@ -29,7 +33,6 @@ exports.deleteOne = async (req,res,next) => {
         await fs.unlink(path.join(__dirname, `../public/images/locations/gallery/${pos}`), (err => err && console.error(err)))
 
         let index = tab.findIndex((t) => t === pos )
-        console.log(index)
 
         await tab.splice(index,1)
         await updateLocation(id,{...location , gallery : tab })
@@ -51,7 +54,6 @@ exports.deleteOneVente = async (req,res,next)=>{
         await fs.unlink(path.join(__dirname, `../public/images/ventes/gallery/${pos}`), (err => err && console.error(err)))
 
         let index = tab.findIndex((t) => t === pos )
-        console.log(index)
 
         await tab.splice(index,1)
         await updateVente(id,{...vente , gallery : tab })
@@ -61,6 +63,28 @@ exports.deleteOneVente = async (req,res,next)=>{
         next(e)
     }
 }
+
+exports.deleteOneRegion = async (req,res,next)=>{
+    try{
+        const id = req.params.id
+        const pos = req.params.pos
+
+        let region = await findRegionId(id)
+        let tab = region.gallery
+
+        await fs.unlink(path.join(__dirname, `../public/images/region/gallery/${pos}`),(err => err && console.error(err)))
+
+        let index = tab.findIndex((t)=> t === pos)
+
+        await tab.splice(index,1)
+        await updateRegion(id,{...region,gallery : tab})
+        res.end()
+
+    }catch (e) {
+        next(e)
+    }
+}
+
 exports.getLocations = async (req,res,next) =>{
     try{
         const locations = await findAllLocations();
@@ -87,11 +111,30 @@ exports.getVentes = async (req,res,next) =>{
         next(e)
     }
 }
+
 exports.getVente = async (req,res,next)=>{
     try{
         const id = req.params.id
         const vente = await findVente(id)
         res.json({vente})
+    }catch (e) {
+        next(e)
+    }
+}
+exports.getRegion = async (req,res,next) =>{
+    try {
+        const region = await findRegion()
+        res.json({region})
+    }catch (e) {
+        next(e)
+    }
+}
+
+exports.getVentesAndLocations = async(req,res,next) =>{
+    try{
+        const limit = req.params.limit
+        const query = await findVenteAndLocation(parseInt(limit))
+        res.json({query})
     }catch (e) {
         next(e)
     }

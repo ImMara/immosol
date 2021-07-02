@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+    div(class="container")
+        h2(class="mt-5")
+            i(class="fas fa-umbrella-beach me-2")
+            .
+                Région
+        form(method="post" action="/region/update/"+region[0]._id enctype="multipart/form-data")
+            div(class="mb-3 row")
+                .col-12
+                    label(class="form-label") Titre
+                .col-12
+                    input(class="form-control" minLength="3" maxLength="300" name="title" required="true" value=region[0].title)
+            div(class="mb-3 row")
+                .col-12
+                    label(class="form-label") Description
+                .col-12
+                    textarea(class="form-control" name="description" minLength="3" required="true" style="height:350px")= region[0].description
+            div(id="input-container" count= region[0].gallery.length )
+                div(id="img-container" class="d-flex ms-sm-5 my-3 flex-wrap justify-content-center justify-content-sm-start")
+                        for image , key in region[0].gallery
+                            div(class="mx-2 my-1 position-relative")
+                                img(src='/images/region/gallery/' + image style="width:180px;height:180px;object-fit:cover;")
+                                div(class="delete btn btn-danger position-absolute top-0 end-0 rounded-0" location=region[0]._id pos=image) x
+                a(id="add-line" class="btn btn-outline-success mb-3 mt-3") Ajouter une image
+            button(class="btn btn-primary mb-5") sauvegarder
+    script(src="/javascripts/region/region.js")
