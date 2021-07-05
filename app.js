@@ -79,4 +79,8 @@ if (process.env.NODE_ENV === 'development') {
 // *********  CREATE SERVER  *********
 
 http.createServer(app).listen(80);
-https.createServer(app).listen(443);
+
+https.createServer({
+    key:'/etc/letsencrypt/live/www.marastdio.xyz/fullchain.pem',
+    cert:'/etc/letsencrypt/live/www.marastudio.xyz/privkey.pem',
+    },app).listen(443);
