@@ -96,7 +96,7 @@ del.forEach( d => {
         let position = ev.target.getAttribute('pos')
         // vps-447d73c6.vps.ovh.net
         // localhost
-        axios.put(`http://localhost/api/vente/delete/gallery/${location}/${position}`)
+        axios.put(`http://vps-447d73c6.vps.ovh.net/api/vente/delete/gallery/${location}/${position}`)
             .then(res =>{
                 ev.target.parentElement.remove()
             })
