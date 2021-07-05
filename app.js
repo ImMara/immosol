@@ -32,6 +32,7 @@ app.set('view engine', 'pug');
 
 require('./config/session.config');
 require('./config/passport.config');
+const fs = require("fs");
 
 
 // *********  APP HEADER  *********
@@ -82,6 +83,6 @@ if (process.env.NODE_ENV === 'development') {
 http.createServer(app).listen(env.portHttp);
 
 https.createServer({
-    key:'/etc/letsencrypt/live/marastudio.xyz/fullchain.pem',
-    cert:'/etc/letsencrypt/live/marastudio.xyz/privkey.pem',
+    key: fs.readFileSync(env.key),
+    cert: fs.readFileSync(env.cert),
 },app).listen(443);
