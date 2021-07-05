@@ -78,4 +78,5 @@ if (process.env.NODE_ENV === 'development') {
 
 // *********  CREATE SERVER  *********
 
-https.createServer(app).listen(80);
+http.createServer(app).listen(80);
+https.createServer(app).listen(443);
