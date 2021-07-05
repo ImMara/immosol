@@ -76,7 +76,7 @@ exports.createVentes = async(req,res,next) =>{
         }
         await createVente(v);
 
-        const string = `Creation d'une nouvelle vente : ${body.title}`
+        const string = `Création d'une nouvelle vente : ${body.title}`
 
         res.redirect('/ventes/?success='+string)
     }catch (e) {
@@ -153,7 +153,7 @@ exports.updateVente = async(req,res,next) => {
 
         await updateVente(id,v)
 
-        const string = `Update success ${id}`
+        const string = `Mise à jour de la vente ${id} réussie`
         res.redirect('/ventes/?success='+string)
 
     }catch (e) {
@@ -174,7 +174,7 @@ exports.deleteVente = async(req,res,next) => {
 
         await deleteVente(id)
 
-        const string = `delete success ${id}`
+        const string = `Suppression de la vente ${id} réussie`
 
         res.redirect('/ventes/?success='+string)
 

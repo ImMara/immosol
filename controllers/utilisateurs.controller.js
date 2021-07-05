@@ -25,7 +25,7 @@ exports.createUtilisateur = async (req,res,next) =>{
     try{
         const body = req.body;
         await createUser(body);
-        const string = `creation d'un utilisateur ${body.username}`
+        const string = `création du nouvel utilisateur ${body.username}`
         res.redirect('/utilisateurs/?success='+string);
     }catch (e) {
         next(e)

@@ -77,7 +77,7 @@ exports.createLocations = async(req,res,next) =>{
         }
         await createLocation(loca);
 
-        const string = `Creation d'une nouvelle location : ${body.loca}`
+        const string = `Création d'une nouvelle location : ${body.loca}`
 
         res.redirect('/locations/?success='+string)
 
@@ -155,7 +155,7 @@ exports.updateLocation = async(req,res,next) => {
 
         await updateLocation(id,loca)
 
-        const string = `mise a jour du blog ${findLoca.title}`
+        const string = `mise à jour de la location ${findLoca.title}`
         res.redirect('/locations/?success= '+string)
 
     }catch (e) {

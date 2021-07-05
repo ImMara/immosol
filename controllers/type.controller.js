@@ -17,7 +17,7 @@ exports.getType = async (req,res,next) =>{
         const body = req.body;
         await createType(body);
 
-        const string = `creation du type ${body.title}`
+        const string = `création du type ${body.title}`
         res.redirect('/type/?success='+string)
     }catch (e) {
      next(e)
