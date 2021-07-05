@@ -4,6 +4,7 @@ const http = require("http");
 
 // *********  ENV  *********
 require('dotenv').config();
+const env = require(`./environment/${ process.env.NODE_ENV }`);
 
 // *********  SERVER PACKAGE  *********
 
@@ -78,7 +79,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // *********  CREATE SERVER  *********
 
-http.createServer(app).listen(80);
+http.createServer(app).listen(env.portHttp);
 
 // https.createServer({
 //     key:'/etc/letsencrypt/live/www.marastdio.xyz/fullchain.pem',
