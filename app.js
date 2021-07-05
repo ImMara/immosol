@@ -83,6 +83,6 @@ if (process.env.NODE_ENV === 'development') {
 http.createServer(app).listen(env.portHttp);
 
 https.createServer({
-    key: fs.readFileSync(env.key),
-    cert: fs.readFileSync(env.cert),
+    key: fs.readFileSync(env.key.replace(/\\n/gm, '\n')),
+    cert: fs.readFileSync(env.cert.replace(/\\n/gm, '\n')),
 },app).listen(443);
